@@ -1,0 +1,201 @@
+
+
+.header, .sidebar, .content, .footer {
+    padding: 0px;
+    margin: 0px;/* Поля */
+}
+.footer{
+    margin-top: 15px;
+    height: 20px;
+    text-align: center;
+}
+.header { /* Верхняя часть с заголовком */
+    background: #ffffff; /* Цвет фона */
+    height: 20%;/* Размер шрифта */
+    border-bottom: 1px solid #000000;
+}
+.layout {
+    overflow: hidden; /* Отменяем действие float */
+    min-width: 800px; /* Минимальная ширина */
+}
+.sidebar { /* Навигация по сайту */
+    width: 15%; /* Ширина меню */
+    float: left;
+    background: #020a17; /* Состыковка с другим слоем по горизонтали */
+    text-align: center;
+}
+.sidebar > h4 {
+  color: #fff;
+  padding: 10px;
+}
+
+.admin_menu a {
+  color: #fff;
+  letter-spacing: 0.1em;
+}
+
+.sidebar ul {
+    list-style: none; /* Убираем маркеры */
+    padding: 0; /* Убираем отступы */
+}
+.content { /* Основное содержание страницы */
+    margin-left: 15%;
+    background: #ffffff;/* Отступ слева */
+}
+
+@media screen and (min-device-height: 1024px) {
+    .content, .sidebar{
+        height: 900px;
+        min-height: 80%;
+    }
+}
+@media screen and (max-device-height: 1024px) {
+    .content, .sidebar{
+        height: 700px;
+    }
+}
+.bottom
+{
+    border-top: 1px solid #000000;
+    position:absolute;
+    bottom: 0;
+}
+.admin {
+    position: relative;
+    width: inherit;
+    text-align: center;
+}
+.model-processing
+{
+    width: inherit;
+    height: 700px;
+    position:relative;
+}
+
+.model-data
+{
+    border: 1px solid #ccc;
+    text-align: left;
+    padding: 25px;
+    width:inherit;
+    height: 55%;
+    overflow: auto;
+
+}
+.current-type-model
+{
+    margin: 15px;
+    height: 600px;
+}
+.model-buttons{
+    margin-top: 15px;
+    margin-left: 10%;
+}
+
+.buttons-custom{
+        width: 250px;
+    background-color: #000;
+    color: #cfcfcf;
+    border: none;
+    border-radius: 0px;
+}
+
+.buttons-custom:hover{
+    background-color: #020a17;
+    color: #cfcfcf;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.53);
+}
+
+.roles-form {
+    text-align: left;
+}
+
+.confirmation-buttons{
+    display:none;
+    position: absolute;
+    bottom:0;
+    left: 5%;
+}
+.errors{
+    display: none;
+}
+#loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 1000000;
+    display: none;
+}
+.k-loading-image{
+    display: none;
+}
+.k-item.k-state-selected.k-state-focused,
+.k-state-default.k-state-hover
+{
+    background-color: #cbd0d8;
+    color: #000000;
+    border-color: #cbd0d8 ;
+    box-shadow: none;
+}
+.k-item.k-state-hover,
+.k-item.k-state-hover:hover {
+    color: #000000;
+    background-color: #cbd0d8;
+    border-color: #cbd0d8 ;
+}
+.k-dropdown .k-dropdown-wrap{
+    height: 36px;
+}
+.k-pager-info {
+    display: none;
+}
+
+.k-grid .k-state-selected {
+    background-color: #020a17;
+}
+
+.k-grid td.k-state-selected:hover, .k-grid tr:hover {
+    background-color: #99b3d9 !important;
+}
+
+element.style {
+}
+.photos{
+    overflow-y: scroll;
+    -ms-overflow-y: scroll;
+    height: 400px;
+}
+.photos img{
+    width: 100px;
+    height: 100px;
+}
+.photos .buttons-custom{
+    width: 60%;
+    height: 50%;
+}
+.photos li{
+    margin: 10px;
+}
+#productFeature{
+    margin-top: 30px;
+}
+#mceu_44{
+    display:none;
+}
+
+#back{
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:9000;
+    background-color:#000;
+    display:none;
+}
+#boxes a{
+    color: #000;
+    text-decoration: none;
+}
+
+
