@@ -3,8 +3,8 @@
     <div class="admin container">
 
         <div class="model-buttons">
-            <button id="add" class="buttons-custom btn btn-default" type="button" data-toggle="modal" data-target="#addModal">Добавить</button>
-            <button id="delete" class="buttons-custom btn btn-default">Удалить</button>
+            <button id="add" class="modal-buttons" type="button" data-toggle="modal" data-target="#addModal">Добавить</button>
+            <button id="delete" class="modal-buttons">Удалить</button>
         </div>
 
         <div class="model-processing">
@@ -49,8 +49,8 @@
                                 <input id="rule" name="rule" type="text" class="form-control">
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" id="saveAdd">Добавить</button>
-                                <button type="reset" id="cancelAdd" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                                <button type="button" class="btn-modal--success" id="saveAdd">Добавить</button>
+                                <button type="reset" id="cancelAdd" class="btn-modal--danger" data-dismiss="modal">Отмена</button>
                             </div>
                         </div>
                     </form>

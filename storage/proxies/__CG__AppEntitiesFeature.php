@@ -64,10 +64,10 @@ class Feature extends \App\Entities\Feature implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'name', 'types', 'products'];
+            return ['__isInitialized__', 'id', 'name', 'types', 'products', 'compatibility'];
         }
 
-        return ['__isInitialized__', 'id', 'name', 'types', 'products'];
+        return ['__isInitialized__', 'id', 'name', 'types', 'products', 'compatibility'];
     }
 
     /**

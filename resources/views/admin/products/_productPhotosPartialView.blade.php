@@ -8,7 +8,7 @@
         <form id="productPhotoForm" enctype="multipart/form-data">
             <input id="productId" type="hidden" value="{{$product->getId()}}" name="productId">
             <input id="images" class="form-control" name="images" type="file">
-            <button id="addPhotos" class="btn btn-default buttons-custom">Добавить</button>
+            <button id="addPhotos" class="btn-modal--success" style="margin-top: 20px; width: 150px">Добавить</button>
         </form>
     </div>
     <div class="photos">
@@ -17,10 +17,9 @@
             <ul class="list-inline">
         @foreach($product->getPhotos() as $photo)
             <li>
-                <div>
-
+                <div style="display: flex; flex-direction: column; align-items: center">
                     <img src="/storage{{$photo->getImage()}}" width="100px" height="100px" class="img-thumbnail">
-                    <button id="{{$photo->getId()}}" class="buttons-custom btn btn-default deletePhoto">Удалить</button>
+                    <button id="{{$photo->getId()}}" class="btn-modal--danger deletePhoto" style="margin-top: 10px">Удалить</button>
                 </div>
             </li>
         @endforeach

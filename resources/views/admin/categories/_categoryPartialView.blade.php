@@ -1,10 +1,6 @@
 <div class="model-data">
-        <h3>Категория №{{$genericTypeModel->getId()}}</h3>
+        <h3>Категория: <strong>{{$genericTypeModel->getName()}}</strong></h3>
 <input type="hidden" id="genericTypeId" value="{{$genericTypeModel->getId()}}">
-<div class="row">
-    <label for="name">Название:</label>
-    <input type="text" name="name" class="" id="name" value="{{$genericTypeModel->getName()}}" disabled="disabled" width="300"/>
-</div>
 </div>
 
 <!-- Modal -->
@@ -13,7 +9,7 @@
 
         <div class="modal-content">
             <div class="modal-header">
-                Измененение категории № {{$genericTypeModel->getId()}}
+                Измененение категории: <strong>{{$genericTypeModel->getName()}}</strong>
             </div>
             <form id="editCategoryForm">
                 <div class="modal-body">
@@ -27,8 +23,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="saveEdit">Сохранить</button>
-                    <button type="reset" id="cancelEdit" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn-modal--success" id="saveEdit">Сохранить</button>
+                    <button type="reset" id="cancelEdit" class="btn-modal--danger" data-dismiss="modal">Отмена</button>
                 </div>
             </form>
         </div>

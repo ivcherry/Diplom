@@ -10,11 +10,13 @@
 
 </div>
 <script type="text/x-kendo-template" id="productFeatureTemplate">
-    <div >
+    <div style="display: flex; flex-direction: column">
         <input id="featureId" type="hidden" value="#= featureId#">
-        <textarea id="featureText" name="feature" class="form-control" disabled="disabled">#= value#</textarea>
-        <button id="saveFeatureText" class="btn btn-default buttons-custom" disabled>Сохранить</button>
-        <button id="editFeatureText" class="btn btn-default buttons-custom">Изменить</button>
+        <textarea id="featureText" name="feature" class="form-control" disabled="disabled">#= value#</textarea><br>
+        <div style="display: flex;">
+            <button id="saveFeatureText" class="btn-modal--success" disabled>Сохранить</button>
+            <button id="editFeatureText" class="btn-modal--edit">Изменить</button>
+        </div>
     </div>
 </script>
 <script>

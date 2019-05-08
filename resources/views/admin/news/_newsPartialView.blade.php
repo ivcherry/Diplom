@@ -1,28 +1,21 @@
 <div class="model-data">
     <h3>Новость №{{$newsModel->getId()}}</h3>
-    <input type="hidden" id="newsId" value="{{$newsModel->getId()}}">
-    <div class="row">
-        <label for="name">Заголовок:</label>
-        <input type="text" name="name" class="" id="title" value="{{$newsModel->getTitle()}}" disabled="disabled"
-               width="300"/>
-
-    </div>
-    <div class="row">
-        <label for="name">Краткое описание:</label>
-        <input type="text" name="name" class="" id="summary" value="{{$newsModel->getSummary()}}" disabled="disabled"
-               width="300"/>
-    </div>
-    <div class="row">
-        <label for="name">Полный текст новости:</label>
-        <input type="text" name="name" class="" id="text" value="{{$newsModel->getText()}}" disabled="disabled"
-               width="300"/>
-    </div>
-
-    <div class="row">
-        <label for="name">Дата:</label>
-        <input type="text" name="name" class="" id="date" value="{{$newsModel->getDate()}}" disabled="disabled"
-               width="300"/>
-    </div>
+    <table class="table">
+        <thead>
+        <th><label for="name" class="header-label">Заголовок</label></th>
+        <th><label for="name" class="header-label">Краткое описание</label></th>
+        <th><label for="name" class="header-label">Полный текст новости</label></th>
+        <th><label for="name" class="header-label">Дата</label></th>
+        </thead>
+        <tbody>
+        <tr>
+            <td><span id="title">{{$newsModel->getTitle()}}</span></td>
+            <td><span id="summary">{{$newsModel->getSummary()}}</span></td>
+            <td><span id="text">{{$newsModel->getText()}}</span></td>
+            <td><span id="date">{{$newsModel->getDate()}}</span></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <!-- Modal -->
@@ -40,29 +33,29 @@
                     </div>
                     <div class="row">
                         <input type="hidden" name="id" value="{{$newsModel->getId()}}">
-                        <div class="form-group">
+                        <div class="form-group form-container">
                             <label for="name">Заголовок</label>
                             <input type="text" name="title" class="form-control" value="{{$newsModel->getTitle()}}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-container">
                             <label for="name">Краткое содержание</label>
                             <textarea type="text" name="summary" class="form-control" >{{$newsModel->getSummary()}}</textarea>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group form-container">
                             <label for="name">Текст</label>
                             <textarea type="text" name="text" class="form-control" >{{$newsModel->getText()}}</textarea>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group form-container">
                             <label for="name">Дата</label>
                             <input type="date" name="date" class="form-control" value="{{$newsModel->getDate()}}">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="saveEdit">Сохранить</button>
-                    <button type="reset" id="cancelEdit" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn-modal--success" id="saveEdit">Сохранить</button>
+                    <button type="reset" id="cancelEdit" class="btn-modal--danger" data-dismiss="modal">Отмена</button>
                 </div>
             </form>
         </div>

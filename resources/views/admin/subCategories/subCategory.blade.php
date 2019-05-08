@@ -4,9 +4,9 @@
     <div class="admin container">
 
         <div class="model-buttons">
-                <button id="add" class="buttons-custom btn btn-default" type="button" data-toggle="modal" data-target="#addModal">Добавить</button>
-                <button id="delete" class="buttons-custom btn btn-default">Удалить</button>
-                <button id="edit" class="buttons-custom btn btn-default" type="button" data-toggle="modal" data-target="#editModal">Изменить</button>
+                <button id="add" class="main-buttons" type="button" data-toggle="modal" data-target="#addModal">Добавить</button>
+                <button id="delete" class="main-buttons">Удалить</button>
+                <button id="edit" class="main-buttonst" type="button" data-toggle="modal" data-target="#editModal">Изменить</button>
         </div>
 
         <div class="model-processing">
@@ -30,19 +30,19 @@
                     <div class="errors alert alert-danger"><ul></ul></div>
                     <form id="addSubCategoryForm">
                         <div class="row">
-                            <div class="form-group">
+                            <div class="form-group form-container">
                                 <label for="name">Название</label>
-                                <input type="text" name="name" class="form-control" >
+                                <input type="text" name="name" class="form-control">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group form-container">
                                 <label for="category">Категория</label>
-                                <input id="categoriesDropDown" name="category" style="width: 100%;">
+                                <input id="categoriesDropDown" name="category" class="form-control">
                             </div>
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" id="saveAdd">Добавить</button>
-                            <button type="reset" id="cancelAdd" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                            <button type="button" class="btn-modal--success" id="saveAdd">Добавить</button>
+                            <button type="reset" id="cancelAdd" class="btn-modal--danger" data-dismiss="modal">Отмена</button>
                         </div>
                     </form>
                 </div>

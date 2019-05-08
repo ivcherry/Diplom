@@ -2,10 +2,10 @@
     <div>
         <h3>Добавить характеристику</h3>
         <input id="typeFeaturesList" style="width: 100%;"/>
-        <button class="btn btn-default buttons-custom" id="addFeatureToSubCategory">Добавить</button>
+        <button class="btn-modal--success" style="width: 200px; margin-top: 10px" id="addFeatureToSubCategory">Добавить</button>
     </div>
 
-    <h2>Характеристики подкатегории "{{$type->getName()}}"</h2>
+    <h2>Характеристики подкатегории <strong>"{{$type->getName()}}"</strong></h2>
     <input type="hidden" id="typeId" value="{{$type->getId()}}" />
 
     <br>
@@ -13,12 +13,12 @@
         @if($type->getFeatures()->isEmpty())
         <span>Для данной подкатегории не выбрана ни одна характеристика</span>
         @endif
-        <ul class="list-inline">
+        <ul class="list-inline" style="overflow: scroll; margin-top: -25px">
             @foreach($type->getFeatures() as $feature)
             <li>
                 <div>
+                    <button class="btn-modal--danger" style="width: 35px;" id="{{$feature->getId()}}">X</button>
                     <label>{{$feature->getName()}}</label>
-                    <button class="btn btn-danger btn-sm deleteFeature" id="{{$feature->getId()}}">Удалить</button>
                 </div>
             </li>
             @endforeach
@@ -26,6 +26,7 @@
     </div>
 
 </div>
+
 
 <script>
     $(document).ready(function () {

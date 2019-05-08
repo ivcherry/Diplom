@@ -1,8 +1,8 @@
 <div class="model-data">
-        <h3>Характеристика №{{$featureModel->getId()}}</h3>
+        <h3>Характеристика: <strong>{{$featureModel->getName()}}</strong></h3>
 <input type="hidden" id="featureId" value="{{$featureModel->getId()}}">
-    <label for="name">Название:</label>
-    <p> {{$featureModel->getName()}} </p>
+    <label for="name" class="name-nnn">Название:</label>
+    <p style="font-size: 15px; margin-left: 20px">+&nbsp;&nbsp;{{$featureModel->getName()}}</p>
 </div>
 
 <!-- Modal -->
@@ -11,7 +11,7 @@
 
         <div class="modal-content">
             <div class="modal-header">
-                Измененение характеристики № {{$featureModel->getId()}}
+                Измененение характеристики: <strong>{{$featureModel->getName()}}</strong>
             </div>
             <form id="editFeatureForm">
                 <div class="modal-body">
@@ -25,8 +25,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="saveEdit">Сохранить</button>
-                    <button type="reset" id="cancelEdit" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn-modal--success" id="saveEdit">Сохранить</button>
+                    <button type="reset" id="cancelEdit" class="btn-modal--danger" data-dismiss="modal">Отмена</button>
                 </div>
             </form>
         </div>
