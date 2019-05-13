@@ -26,7 +26,7 @@
 
         <div class="modal-content">
             <div class="modal-header">
-                Измененение акции № &nbsp; {{$saleModel->getId()}}
+                Измененение акции № &nbsp; <strong>{{$saleModel->getId()}}</strong>
             </div>
             <form id="editSaleForm">
                 <div class="modal-body">
@@ -56,8 +56,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="saveEdit">Сохранить</button>
-                    <button type="reset" id="cancelEdit" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn-modal--success" id="saveEdit">Сохранить</button>
+                    <button type="reset" id="cancelEdit" class="btn-modal--danger" data-dismiss="modal">Отмена</button>
                 </div>
             </form>
         </div>

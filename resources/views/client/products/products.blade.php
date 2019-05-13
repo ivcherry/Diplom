@@ -1,9 +1,11 @@
 @extends('client.layouts.clientLayout')
+
 @section('breadcrumbs')
 <div>
     {{Breadcrumbs::render('products', $type)}}
 </div>
 @endsection
+
 @section('content')
 <div>
     <input id="productFilter" hidden value="{{$filter}}">
@@ -14,11 +16,15 @@
     <div id="productsPager"></div>
 </div>
 @endsection
+
 @section('scripts')
     <script src="/js/common-settings.js"></script>
     <script type="text/x-kendo-template" id="productListTemplate">
+
+
         <div class="product">
             <input type="hidden" class="product-id-hidden" value="#= id#">
+
             <div class="photo">
                 <a class="" href="product/#= id#">
                     #if(productImage){#
@@ -28,28 +34,33 @@
                     #}#
                 </a>
             </div>
-            <div class="title">
-                <span><a href="product/#= id#"><h3>#:name#</h3></a></span>
-            </div>
-            <div class="addToCompare">
-                <button class="btn add-to-compare-btn">
-                    <img src="/css/Default/compare.png" />
 
-                </button>
+            <div class="title">
+                <span><a href="product/#= id#"><h4>#:name#</h4></a></span>
             </div>
+
+            {{--<div class="addToCompare">--}}
+                {{--<button class="btn add-to-compare-btn addCompare">--}}
+                    {{--<img src="/css/Default/compare.png" />--}}
+                    {{--<i class="fas fa-balance-scale"></i>--}}
+                {{--</button>--}}
+            {{--</div>--}}
+
             <div class="addToCart">
                     #if(amount > 0){#
-                        <button class="btn add-to-cart-btn" >
+                        <button class="btn add-to-cart-btn addCart">
                     #}else{#
                             <button class="btn add-to-cart-btn" disabled="disabled">
                     #}#
-                        <img src="/css/Default/cart.png" />
-                        <span>Купить</span>
+                        {{--<img src="/css/Default/cart.png"/>--}}
+                        <span><i class="fas fa-shopping-cart" style="margin-right: 10px"></i>Купить</span>
                     </button>
             </div>
+
             <div class="price">
-                <span>#:price# руб</span></spa>
+                <span><h4>#:price# руб</h4></span>
             </div>
+
             <div class="amount">
                 <span>
                     В наличии:
@@ -60,18 +71,20 @@
                     #}#
                 </span>
             </div>
+
             <div class="reviews">
                 #if(reviews && reviews > 0){#
                 <div>
                     <a href="\\#">
                         <img src="/css/Default/reviews.png"/>
-                        <span>#: reviews#</span>
+                        <span style="color: #cacaca">#: reviews#</span>
                     </a>
                 </div>
                 #}#
             </div>
         </div>
     </script>
+
     <script>
         $(function () {
            var dataSource = new kendo.data.DataSource({

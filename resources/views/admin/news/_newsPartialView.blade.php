@@ -24,7 +24,7 @@
 
         <div class="modal-content">
             <div class="modal-header">
-                Измененение новости № {{$newsModel->getId()}}
+                Измененение новости № <strong>{{$newsModel->getId()}}</strong>
             </div>
             <form id="editNewsForm">
                 <div class="modal-body">

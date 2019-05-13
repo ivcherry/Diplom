@@ -1,5 +1,5 @@
 <div class="model-data">
-        <h3>Пользователь №{{$userModel->getId()}}</h3>
+        <h3>Пользователь № &nbsp;{{$userModel->getId()}}</h3>
 <input type="hidden" id="userId" value="{{$userModel->getId()}}">
 
     <label for="name">Имя:</label>
@@ -20,7 +20,7 @@
 
         <div class="modal-content">
             <div class="modal-header">
-                Измененение роли пользователя {{$userModel->getFullName()}}
+                Измененение роли пользователя <strong> {{$userModel->getFullName()}}</strong>
             </div>
             <form id="editUserRolesForm">
                 <div class="modal-body">
@@ -43,8 +43,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="saveEditRoles">Сохранить</button>
-                    <button type="reset" id="cancelEdit" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn-modal--success" id="saveEditRoles">Сохранить</button>
+                    <button type="reset" id="cancelEdit" class="btn-modal--danger" data-dismiss="modal">Отмена</button>
                 </div>
                     </div>
                 </div>

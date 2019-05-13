@@ -517,10 +517,6 @@
     margin: 0 15px;
 }
 
-.fas {
-    color: #fff;
-}
-
 .btn-modal--success {
     background-color: #00C851;
     height: 35px;
@@ -557,6 +553,10 @@
     width: 100px;
 }
 
+.fas {
+    color: #fff;
+}
+
 
 /* ========== Формы ================*/
 
@@ -581,3 +581,10 @@
     margin: 0 20px;
 }
 
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}

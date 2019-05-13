@@ -3,9 +3,12 @@
 @section('content')
     <div class="admin container">
         <div class="model-buttons">
-               <button id="add" class="model-buttons" type="button" data-toggle="modal" data-target="#addModal">Добавить</button>
-               <button id="delete" class="model-buttons">Удалить</button>
-               <button id="edit" class="model-buttons" type="button" data-toggle="modal" data-target="#editModal">Изменить</button>
+            <button id="add" class="main-buttons" type="button" data-toggle="modal" data-target="#addModal">
+                <i class="fas fa-plus" style="margin-right: 10px"></i>Добавить</button>
+            <button id="delete" class="main-buttons">
+                <i class="fas fa-trash-alt" style="margin-right: 10px"></i></i>Удалить</button>
+            <button id="edit" class="main-buttons" type="button" data-toggle="modal" data-target="#editModal">
+                <i class="fas fa-edit" style="margin-right: 10px"></i>Изменить</button>
         </div>
         <div class="model-processing">
             <div class="current-type-model" id="currentSaleModel">
@@ -24,7 +27,7 @@
 
             <div class="modal-content">
                 <div class="modal-header">
-                    Добавление акции
+                    Добавление новой акции
                 </div>
                 <div class="modal-body">
                     <div class="errors alert alert-danger">

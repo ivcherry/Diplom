@@ -13,7 +13,7 @@
 
         <div class="modal-content">
             <div class="modal-header">
-               Измененение подкатегории: {{$typeModel->getName()}}
+               Измененение подкатегории: <strong>{{$typeModel->getName()}}</strong>
             </div>
             <form id="editSubCategoryForm">
                 <div class="modal-body">

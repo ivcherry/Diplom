@@ -106,9 +106,11 @@
         @yield('content')
     </div>
 </div>
+
 <div class="footer">
     &copy;&nbsp;&nbsp; Все права защищены.
 </div>
+
 </div>
 
 </div>

@@ -2,7 +2,7 @@
     <input type="hidden" value="{{json_encode($typeFeatures)}}" id="typeFeatures">
     <input type="hidden" value="{{$product->getId()}}" id="productId">
     <div class="featuresProduct">
-        <label for="features"><h3>Характеристики товара "{{$product->getName()}}"</h3></label>
+        <label for="features"><h3>Характеристики товара <strong>"{{$product->getName()}}"</strong></h3></label>
         <input id="featuresList" style="width:100%;" class="form-control">
     </div>
 
@@ -14,8 +14,10 @@
         <input id="featureId" type="hidden" value="#= featureId#">
         <textarea id="featureText" name="feature" class="form-control" disabled="disabled">#= value#</textarea><br>
         <div style="display: flex;">
-            <button id="saveFeatureText" class="btn-modal--success" disabled>Сохранить</button>
-            <button id="editFeatureText" class="btn-modal--edit">Изменить</button>
+            <button id="saveFeatureText" class="btn-modal--success"  style="width: 120px" disabled>
+                <i class="fas fa-save" style="margin-right: 10px"></i>Сохранить</button>
+            <button id="editFeatureText" class="btn-modal--edit" style="width: 120px">
+                <i class="fas fa-edit" style="margin-right: 10px"></i>Изменить</button>
         </div>
     </div>
 </script>
