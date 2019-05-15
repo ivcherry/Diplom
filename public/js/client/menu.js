@@ -13,3 +13,13 @@ $(document).ready(function(){
   });
 
 });
+
+function showBurger() {
+    let ddmenu = document.getElementById('ddmenu');
+
+    if (ddmenu.className === 'topnav') {
+        ddmenu.className += ' responsive';
+    } else {
+        ddmenu.className = 'topnav';
+    }
+}

@@ -173,16 +173,22 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet">
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>
+    {{--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
+    {{--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>--}}
+    {{--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>--}}
+    {{--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>--}}
 </head>
 <body>
 
 <div class="navbar">
+    <div class="burger" onclick="showBurger()" id="show">
+        <div class="burger-item"></div>
+        <div class="burger-item"></div>
+        <div class="burger-item"></div>
+    </div>
     <a href="/home" id="title">NICE SHOP</a>
-    <ul id="ddmenu">
+
+    <ul id="ddmenu" class="topnav">
         <li><a href="#">Новости и акции</a>
             <ul>
                 <li><a href="#">Новости</a></li>
@@ -218,10 +224,8 @@
                 <li><a href="/tuning">Настройка техники</a></li>
             </ul>
         </li>
-        <li>
-            <a href="/equipment">Комплектация</a>
-        </li>
     </ul>
+
     <div class="compareItems">
         <a href="/shoppingCart">
             <span>
@@ -233,14 +237,14 @@
                 <span class="cart-product-count" style="color: black">0</span>
             @endif
         </a>
-        <a href="/compare">
-            <span><img src="/css/Default/compare.png" width="30" height="25"/></span>
-            @if(Session::has('compareProducts'))
-                <span class="compare-product-count">{{ Session::get('compareProducts')->getComparedCount() }}</span>
-            @else
-                <span class="compare-product-count" style="color: black">0</span>
-            @endif
-        </a>
+        {{--<a href="/compare">--}}
+            {{--<span><img src="/css/Default/compare.png" width="30" height="25"/></span>--}}
+            {{--@if(Session::has('compareProducts'))--}}
+                {{--<span class="compare-product-count">{{ Session::get('compareProducts')->getComparedCount() }}</span>--}}
+            {{--@else--}}
+                {{--<span class="compare-product-count" style="color: black">0</span>--}}
+            {{--@endif--}}
+        {{--</a>--}}
     </div>
     <div class="login">
         @auth
@@ -279,6 +283,9 @@
 <!-- Scripts -->
 @yield('scripts')
 <script src="/js/client/menu.js"></script>
+<script>
+
+</script>
 </body>
 </html>
 
