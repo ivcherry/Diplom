@@ -39,13 +39,6 @@
                 <span><a href="product/#= id#"><h4>#:name#</h4></a></span>
             </div>
 
-            {{--<div class="addToCompare">--}}
-                {{--<button class="btn add-to-compare-btn addCompare">--}}
-                    {{--<img src="/css/Default/compare.png" />--}}
-                    {{--<i class="fas fa-balance-scale"></i>--}}
-                {{--</button>--}}
-            {{--</div>--}}
-
             <div class="addToCart">
                     #if(amount > 0){#
                         <button class="btn add-to-cart-btn addCart">

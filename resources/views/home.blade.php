@@ -1,32 +1,50 @@
 @extends('client.layouts.clientLayout')
 
 @section('content')
-    <div id="carousel-1z" class="carousel slide carousel-fade" data-ride="carousel">
+    <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carousel-1z" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-1z" data-slide-to="1"></li>
-            <li data-target="#carousel-1z" data-slide-to="2"></li>
+            <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-2" data-slide-to="1"></li>
+            <li data-target="#carousel-example-2" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-                <img class="d-block w-100"
-                     src="https://i.simpalsmedia.com/999.md/BoardImages/900x900/e391fa92a467ddbd39334268954daa3b.jpg"
-                     style="max-height: 400px;">
+                <div class="view">
+                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" style="height: 300px;">
+                    <div class="mask rgba-black-light"></div>
+                </div>
+                <div class="carousel-caption">
+                    <h3 class="h3-responsive">Телефоны</h3>
+                    <p>Только в нашем магазине, самые лучшие цены!</p>
+                </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"
-                     style="height: 400px;">
+                <div class="view">
+                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg"
+                         style="height: 300px;">
+                    <div class="mask rgba-black-strong"></div>
+                </div>
+                <div class="carousel-caption">
+                    <h3 class="h3-responsive">Ноутбуки</h3>
+                    <p>Только в нашем магазине, самые лучшие цены!</p>
+                </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"
-                     style="height: 400px;">
+                <div class="view">
+                    <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" style="height: 300px;">
+                    <div class="mask rgba-black-slight"></div>
+                </div>
+                <div class="carousel-caption">
+                    <h3 class="h3-responsive">Планшеты</h3>
+                    <p>Только в нашем магазине, самые лучшие цены!</p>
+                </div>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carousel-1z" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carousel-1z" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>

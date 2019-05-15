@@ -241,9 +241,6 @@ a:hover {
     display: block;
 }
 
-.form-horizontal {
-    margin: 0 auto;
-}
 
 .auth {
     display: flex;
@@ -256,42 +253,48 @@ a:hover {
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 10px 10px rgba(206, 206, 206, 0.6);
-    margin: 0 auto;
+    margin: 50px auto;
+    padding-left: 50px;
+
 }
 
-
-
-
-/* ========== login =============*/
-#email {
-    width: 120% !important;
+.order-form {
+    display: flex;
+    align-items: center;
+    width: 35%;
+    margin: 100px auto 50px;
+    padding: 20px;
+    position: relative;
+    font-size: 24px;
+    border: none !important;
+    border-radius: 7px;
+    box-shadow: 0 0 10px 10px rgba(206, 206, 206, 0.6) !important;
 }
 
-#password {
-    width: 120% !important;
+.order-result {
+    border-top: 1px solid #000000;
 }
 
-
-
-/* ========== reg  =============*/
-#fullName {
-    width: 120%;
+#installForm {
+    width: 100%;
 }
 
-#password-confirm {
-    width: 120%;
+.form-provide {
+    width: 65% !important;
+}
+
+.panel {
+    width: 45%;
+}
+
+.form-horizontal {
+    width: 100% !important;
 }
 
 .reg {
     margin: 0 auto;
     width: 100% !important;
 }
-
-
-
-
-
-
 
 
 @media screen and (max-width: 1375px) {
@@ -301,6 +304,14 @@ a:hover {
 
     .col {
         margin: 20px 0;
+    }
+
+    .order-form {
+        width: 60%;
+    }
+
+    .panel {
+        width: 60% !important;
     }
 }
 
@@ -330,22 +341,7 @@ a:hover {
 
     .panel {
         padding-left: 20px !important;
-    }
-
-    #email {
-        width: auto !important;
-    }
-
-    #password {
-        width: auto !important;
-    }
-
-    #fullName {
-        width: auto !important;
-    }
-
-    #password-confirm {
-        width: auto !important;
+        width: 100% !important;
     }
 
     .card {
@@ -367,7 +363,13 @@ a:hover {
         width: 100%;
     }
 
+    .order-form {
+        width: 80%;
+    }
 
+    .form-provide {
+        width: 85% !important;
+    }
 }
 
 @media screen and (max-width: 420px) {
@@ -399,25 +401,22 @@ a:hover {
     }
 
     .panel {
-        padding-left: 0 !important;
+        padding-left: 20px !important;
     }
 
-    #email {
-        width: auto !important;
+    .order-form {
+        width: 100%;
     }
 
-    #password {
-        width: auto !important;
-    }
-
-    #fullName {
-        width: auto !important;
-    }
-
-    #password-confirm {
-        width: auto !important;
+    .form-provide {
+        width: 95% !important;
     }
 }
+
+
+
+
+
 
 
 
@@ -725,14 +724,12 @@ div.tab button.active {
     left: 25%;
     width: 50%;
     border-radius: 7px;
-    border: 1px solid #b1b1b1;
-!important;
+    border: 1px solid #b1b1b1 !important;
     padding: 10px;
 }
 
 .shopping-cart-products .product {
-    border: 1px solid #fff;
-!important;
+    border: 1px solid #fff !important;
 }
 
 .shopping-cart-products .product-amount {
@@ -775,22 +772,6 @@ div.tab button.active {
 .shopping-cart-products .result-sum {
     font-size: 24px;
     text-align: center;
-}
-
-.order-form {
-    width: 30%;
-    position: relative;
-    left: 30%;
-    font-size: 24px;
-    background-color: #FFFFFF;
-    border-radius: 7px;
-    border: 1px solid #b1b1b1;
-!important;
-    padding: 10px;
-}
-
-.order-result {
-    border-top: 1px solid #000000;
 }
 
 #boxes .window {
