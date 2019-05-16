@@ -85,6 +85,7 @@ a:hover {
     letter-spacing: 1px;
     display: inline-block;
     text-transform: uppercase;
+    transition: all 0.7s ease-in-out !important;
 }
 
 #ddmenu li a {
@@ -99,6 +100,7 @@ a:hover {
     -moz-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
     transition: all 0.2s linear;
+    width: 100%;
 }
 
 #ddmenu li:hover > a {
@@ -108,17 +110,25 @@ a:hover {
 #ddmenu ul {
     position: absolute;
     top: 100%;
-    background-color: #FAFAFA;
+    background-color: #f6f6f6;
     display: none;
     margin: 0;
     padding: 7px 0;
     list-style: none;
     width: 250px;
+    z-index: 999999;
 }
 
 #ddmenu ul li {
     display: inline-block;
-    width: 100%;
+    background-color: #f6f6f6;
+    width: calc(100% - 10px);
+    transition: all 0.2s ease-in-out;
+}
+
+#ddmenu ul li:hover {
+    margin-left: 10px;
+    transition: all 0.2s ease-in-out;
 }
 
 #ddmenu ul li a {
@@ -143,6 +153,17 @@ a:hover {
 #ddmenu ul li a:hover {
     background: #E6E6E6;
 }
+
+.hidden-item {
+    display: none !important;
+}
+
+
+
+
+
+
+
 
 
 
@@ -297,6 +318,13 @@ a:hover {
 }
 
 
+
+
+
+
+
+
+
 @media screen and (max-width: 1375px) {
     .row {
         margin: 0 !important;
@@ -372,6 +400,7 @@ a:hover {
     }
 }
 
+
 @media screen and (max-width: 420px) {
     .col {
         width: 95% !important;
@@ -380,20 +409,27 @@ a:hover {
 
     .burger {
         display: block;
-        margin-right: 20px;
+        margin-left: -35%;
+        position: absolute;
     }
 
-    #ddmenu.topnav {
-        display: none !important;
+    #title {
+        position: absolute;
+        margin-left: 20%;
     }
 
-    #ddmenu.topnav.responsive {
-        display: flex !important;
+    #ddmenu.responsive {
+        display: flex;
         flex-direction: column;
+        margin-top: 62px;
     }
 
-    .navbar #ddmenu {
-        width: 320px !important;
+    .hidden-item {
+        display: block !important;
+    }
+
+    .login, .compareItems {
+        display: none !important;
     }
 
     #carousel-1z {
@@ -411,6 +447,19 @@ a:hover {
     .form-provide {
         width: 95% !important;
     }
+
+    #ddmenu ul ul {
+        background-color: #D8D8D8;
+        display: none;
+        top: 0;
+        left: 0;
+    }
+
+
+
+
+
+
 }
 
 
@@ -582,19 +631,20 @@ tbody tr:nth-child(odd) {
 }
 
 .product-search {
-    width: 80%;
-    left: 10%;
+    width: 95%;
     position: relative;
-    margin: 20px;
+    margin: 30px auto;
 }
 
 .product-search input {
-    width: 95%;
-    height: 40px;
+    width: 100%;
+    height: 50px;
     border-radius: 6px;
     border: 1px;
-    box-shadow: none;
     outline: none !important;
+    padding: 15px;
+    box-shadow: 0 0 10px 3px #888;
+    margin: 0 auto;
 }
 
 .inline {
@@ -719,10 +769,22 @@ div.tab button.active {
     color: #133700;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 .shopping-cart-products {
     position: relative;
-    left: 25%;
-    width: 50%;
+    width: 100%;
     border-radius: 7px;
     border: 1px solid #b1b1b1 !important;
     padding: 10px;
@@ -755,7 +817,6 @@ div.tab button.active {
 
 #emptyCompare p {
     margin: 25px;
-    left: 25%;
 }
 
 .not-allowed-notice {
