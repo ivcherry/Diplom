@@ -12,11 +12,12 @@
                   @if  ( $product->getPhotos()->isEmpty() )
                   <img src="/css/Default/image-not-available.jpg" alt="Фото отсутствует"/>
                   @else
-                  <img src="/storage{{ $product->getPhotos()->first()->getImage() }}" alt="Фото"/>
+                  {{--<img src="/storage{{ $product->getPhotos()->first()->getImage() }}" alt="Фото"/>--}}
+                    <img src="https://www.1zoom.ru/big2/49/179561-melisenta.jpg" alt="" style="width: 300px; height: 300px">
                   @endif
             </div>
             <div class='summary inline'>
-                  <p class='price'>{{ $product->getPrice() }} P.</p>
+                  <p class='price'>{{ $product->getPrice() }} ₽</p>
                   <p class='prod'>Производитель: {{ $product->getProducer() }}</p>
                   <p class='desc'>{{ $product->getDescription() }}</p>
                   <div>
