@@ -1,6 +1,6 @@
 <?php
+
 use Illuminate\Database\Seeder;
-use App\Entities\UserRoles;
 
 class PageContentTableSeeder extends Seeder
 {
@@ -11,8 +11,6 @@ class PageContentTableSeeder extends Seeder
      */
     public function run()
     {
-
-
 
 
         DB::table('page_contents')->insert(

@@ -23,7 +23,7 @@
                                 name="modal">Выбрать
                         </button>
                     </label>
-                    <input required name='receivingTime' id="chooseReceivingTime"  class="readonly"
+                    <input required name='receivingTime' id="chooseReceivingTime" class="readonly"
                            style="width: 100%">
                 </div>
             </div>
@@ -66,7 +66,7 @@
 
         $(document).ready(function () {
 
-            $(".readonly").on('keydown paste', function(e){
+            $(".readonly").on('keydown paste', function (e) {
                 e.preventDefault();
             });
 
@@ -75,7 +75,7 @@
 
             $('button[name=modal]').click(function (e) {
                 // e.preventDefault();
-                $(this).attr('disabled',true);
+                $(this).attr('disabled', true);
 
                 $.get('/workSchedules', {}, function (response) {
                     let arrTimes = [];
@@ -114,18 +114,18 @@
                     table += '</tr></thead><tbody>';
 
 
-                    Object.keys(arrTableData).forEach(date=>{
+                    Object.keys(arrTableData).forEach(date => {
                         table += '<tr>';
                         table += '<td>' + date + '</td>';
 
                         const times = arrTableData[date];
-                        Object.keys(times).forEach(time=>{
+                        Object.keys(times).forEach(time => {
                             const timeObj = times[time];
 
-                            if(timeObj.status !==1){
-                                table += `<td class="bg-danger" name='timeSlot' id= "${date + '__' + time+'-'+timeObj.id}"> </td>`
-                            }else{
-                                table += `<td class="bg-success" name='timeSlot' id= "${date + '__' + time+'-'+timeObj.id}"> </td>`
+                            if (timeObj.status !== 1) {
+                                table += `<td class="bg-danger" name='timeSlot' id= "${date + '__' + time + '-' + timeObj.id}"> </td>`
+                            } else {
+                                table += `<td class="bg-success" name='timeSlot' id= "${date + '__' + time + '-' + timeObj.id}"> </td>`
                             }
                         });
 
@@ -183,7 +183,7 @@
 
             $('.window .close').click(function (e) {
                 e.preventDefault();
-                $('button[name=modal]').attr('disabled',false);
+                $('button[name=modal]').attr('disabled', false);
                 const id = $('input[name=id_work_scheduler]').attr('value');
                 const url = `/workSchedules/${id}/updateState`;
 

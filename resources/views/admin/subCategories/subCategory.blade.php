@@ -5,11 +5,14 @@
 
         <div class="model-buttons">
             <button id="add" class="main-buttons" type="button" data-toggle="modal" data-target="#addModal">
-                <i class="fas fa-plus" style="margin-right: 10px"></i>Добавить</button>
+                <i class="fas fa-plus" style="margin-right: 5px"></i>Добавить
+            </button>
             <button id="delete" class="main-buttons">
-                <i class="fas fa-trash-alt" style="margin-right: 10px"></i></i>Удалить</button>
-            <button id="edit" class="main-buttons" type="button" data-toggle="modal" data-target="#editModal">
-                <i class="fas fa-edit" style="margin-right: 10px"></i>Изменить</button>
+                <i class="fas fa-trash-alt" style="margin-right: 5px"></i>Удалить
+            </button>
+            <button id="edit" class="main-buttonst" type="button" data-toggle="modal" data-target="#editModal">
+                <i class="fas fa-edit" style="margin-right: 5px"></i>Изменить
+            </button>
         </div>
 
         <div class="model-processing">
@@ -30,7 +33,9 @@
                     Добавление подкатегории
                 </div>
                 <div class="modal-body">
-                    <div class="errors alert alert-danger"><ul></ul></div>
+                    <div class="errors alert alert-danger">
+                        <ul></ul>
+                    </div>
                     <form id="addSubCategoryForm">
                         <div class="row">
                             <div class="form-group form-container">
@@ -45,7 +50,8 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn-modal--success" id="saveAdd">Добавить</button>
-                            <button type="reset" id="cancelAdd" class="btn-modal--danger" data-dismiss="modal">Отмена</button>
+                            <button type="reset" id="cancelAdd" class="btn-modal--danger" data-dismiss="modal">Отмена
+                            </button>
                         </div>
                     </form>
                 </div>

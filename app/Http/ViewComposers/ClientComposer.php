@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Http\ViewComposers;
 
-use Illuminate\View\View;
 use App\BusinessLogic\GenericTypeManager;
+use Illuminate\View\View;
 
 class ClientComposer
 {

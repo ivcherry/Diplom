@@ -7,10 +7,11 @@
  */
 
 namespace App\Repositories;
+
 use App\Entities\News;
-use Doctrine\ORM\EntityManager;
-use App\Repositories\Base\GenericRepository;
 use App\Entities\PaginationResult;
+use App\Repositories\Base\GenericRepository;
+use Doctrine\ORM\EntityManager;
 
 class NewsRepository extends GenericRepository
 {
@@ -18,18 +19,20 @@ class NewsRepository extends GenericRepository
     {
         parent::__construct($entityManager, News::class);
     }
+
     public function getNewsByTitle($title)
     {
         return $this->repo->findOneBy(['title' => $title]);
     }
 
-    public function getPaginate($pageSize,$pageNumber){
+    public function getPaginate($pageSize, $pageNumber)
+    {
         $query = $this->repo->createQueryBuilder($this->model);
 
         $query = $query
-            ->orderBy($this->model.'.id')
+            ->orderBy($this->model . '.id')
             ->setMaxResults($pageSize)
-            ->setFirstResult($pageSize*($pageNumber-1))
+            ->setFirstResult($pageSize * ($pageNumber - 1))
             ->getQuery();
         $news = $query->execute();
 

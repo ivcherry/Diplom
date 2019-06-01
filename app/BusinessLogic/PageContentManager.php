@@ -2,11 +2,12 @@
 
 namespace App\BusinessLogic;
 
+use App\Entities\PageContent;
 use App\Repositories\UnitOfWork\UnitOfWork;
 use Exception;
-use App\Entities\PageContent;
 
-class PageContentManager{
+class PageContentManager
+{
 
     private $_unitOfWork;
 
@@ -15,15 +16,17 @@ class PageContentManager{
         $this->_unitOfWork = $unitOfWork;
     }
 
-    public function getPageContentByPageName($pageName){
-        if(empty($pageName)) {
+    public function getPageContentByPageName($pageName)
+    {
+        if (empty($pageName)) {
             throw new Exception("Невозможно найти контент страницы. Не указан псевдоним страницы.");
         }
         return $this->_unitOfWork->pageContentRepository()->getByPageName($pageName);
     }
 
-    public function savePageContent(PageContent $pageContent){
-        if(empty($pageContent)){
+    public function savePageContent(PageContent $pageContent)
+    {
+        if (empty($pageContent)) {
             throw new Exception("Ошибка сохранения контента страницы.");
         }
 

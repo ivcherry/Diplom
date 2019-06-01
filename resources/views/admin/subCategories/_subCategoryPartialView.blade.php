@@ -1,10 +1,10 @@
 <div class="model-data">
-        <h3>Подкатегория: <strong>{{$typeModel->getGenericTypeName()}}</strong></h3>
-        <input type="hidden" id="typeId" value="{{$typeModel->getId()}}">
-        <div class="row">
-            <label for="name" class="name-nnn">Название:</label>
-            <span id="name" class="name-nnn"><strong>{{$typeModel->getName()}}</strong></span>
-        </div>
+    <h3>Подкатегория: <strong>{{$typeModel->getGenericTypeName()}}</strong></h3>
+    <input type="hidden" id="typeId" value="{{$typeModel->getId()}}">
+    <div class="row">
+        <label for="name" class="name-nnn">Название:</label>
+        <span id="name" class="name-nnn"><strong>{{$typeModel->getName()}}</strong></span>
+    </div>
 </div>
 
 <!-- Modal -->
@@ -13,11 +13,13 @@
 
         <div class="modal-content">
             <div class="modal-header">
-               Измененение подкатегории: <strong>{{$typeModel->getName()}}</strong>
+                Измененение подкатегории: {{$typeModel->getName()}}
             </div>
             <form id="editSubCategoryForm">
                 <div class="modal-body">
-                    <div class="errors alert alert-danger"><ul></ul></div>
+                    <div class="errors alert alert-danger">
+                        <ul></ul>
+                    </div>
                     <div class="row">
                         <input type="hidden" name="id" value="{{$typeModel->getId()}}">
                         <div class="form-group form-container">
@@ -26,7 +28,8 @@
                         </div>
                         <div class="form-group form-container">
                             <label for="category">Категория</label>
-                            <input id="editCategoriesDropDown" class="form-control" name="category" value="{{$typeModel->getGenericTypeId()}}">
+                            <input id="editCategoriesDropDown" class="form-control" name="category"
+                                   value="{{$typeModel->getGenericTypeId()}}">
                         </div>
                     </div>
                 </div>

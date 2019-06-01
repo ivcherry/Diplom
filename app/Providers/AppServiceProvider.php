@@ -2,9 +2,6 @@
 
 namespace App\Providers;
 
-use App\BusinessLogic\TypeManager;
-use App\Repositories\TypeRepository;
-use Doctrine\ORM\EntityManager;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

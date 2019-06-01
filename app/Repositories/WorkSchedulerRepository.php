@@ -7,10 +7,10 @@
  */
 
 namespace App\Repositories;
+
 use App\Entities\WorkScheduler;
-use Doctrine\ORM\EntityManager;
 use App\Repositories\Base\GenericRepository;
-use App\Entities\PaginationResult;
+use Doctrine\ORM\EntityManager;
 
 class WorkSchedulerRepository extends GenericRepository
 {

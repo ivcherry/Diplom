@@ -7,10 +7,11 @@
  */
 
 namespace App\Repositories;
+
+use App\Entities\ProductFeature;
+use App\Repositories\Base\GenericRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
-use App\Repositories\Base\GenericRepository;
-use App\Entities\ProductFeature;
 
 class ProductFeatureRepository extends GenericRepository
 {
@@ -19,19 +20,21 @@ class ProductFeatureRepository extends GenericRepository
         parent::__construct($entityManager, ProductFeature::class);
     }
 
-    public function getByProductIdAndFeatureId($productId, $featureId){
-       $qb = $this->em->createQueryBuilder();
+    public function getByProductIdAndFeatureId($productId, $featureId)
+    {
+        $qb = $this->em->createQueryBuilder();
 
-       $result = $qb->select('pf')
-                   ->from($this->model, 'pf')
-                   ->where('pf.product = '.$productId.' AND pf.feature = '.$featureId)
-                   ->getQuery()
-                   ->getResult();
+        $result = $qb->select('pf')
+            ->from($this->model, 'pf')
+            ->where('pf.product = ' . $productId . ' AND pf.feature = ' . $featureId)
+            ->getQuery()
+            ->getResult();
 
-       return new ArrayCollection($result);
+        return new ArrayCollection($result);
     }
 
-    public function deleteByProductId($productId){
+    public function deleteByProductId($productId)
+    {
 
         $qb = $qb = $this->em->createQueryBuilder();
 

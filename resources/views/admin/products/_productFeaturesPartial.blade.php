@@ -14,15 +14,17 @@
         <input id="featureId" type="hidden" value="#= featureId#">
         <textarea id="featureText" name="feature" class="form-control" disabled="disabled">#= value#</textarea><br>
         <div style="display: flex;">
-            <button id="saveFeatureText" class="btn-modal--success"  style="width: 120px" disabled>
-                <i class="fas fa-save" style="margin-right: 10px"></i>Сохранить</button>
-            <button id="editFeatureText" class="btn-modal--edit" style="width: 120px">
-                <i class="fas fa-edit" style="margin-right: 10px"></i>Изменить</button>
+            <button id="saveFeatureText" class="btn-modal--success" disabled>
+                <i class="fas fa-save" style="margin-right: 5px"></i>Сохранить
+            </button>
+            <button id="editFeatureText" class="btn-modal--edit">
+                <i class="fas fa-edit" style="margin-right: 5px"></i>Изменить
+            </button>
         </div>
     </div>
 </script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         var data = JSON.parse($("#typeFeatures").val());
 
         $("#featuresList").kendoDropDownList({

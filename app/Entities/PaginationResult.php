@@ -7,6 +7,7 @@
  */
 
 namespace App\Entities;
+
 use JsonSerializable;
 
 class PaginationResult implements JsonSerializable

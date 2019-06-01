@@ -7,12 +7,12 @@
  */
 
 namespace App\Http\Controllers\Admin;
+
 use App\BusinessLogic\GenericTypeManager;
-use App\Http\Controllers\Controller;
-use App\ViewModels\GenericTypeViewModel;
-use Illuminate\Http\Request;
 use App\Entities\GenericType;
+use App\Http\Controllers\Controller;
 use Exception;
+use Illuminate\Http\Request;
 
 class GenericTypeController extends Controller
 {
@@ -28,7 +28,8 @@ class GenericTypeController extends Controller
         return view('admin.categories.index');
     }
 
-    public function getAllGenericTypes(Request $request){
+    public function getAllGenericTypes(Request $request)
+    {
         $response = $this->_genericTypeManager->getAllGenericTypes();
         return ($response);
     }
@@ -50,8 +51,9 @@ class GenericTypeController extends Controller
         return response($view);
     }
 
-    public function addGenericType(Request $request){
-        try{
+    public function addGenericType(Request $request)
+    {
+        try {
             $genericType = new GenericType();
             $genericType->setName($request->name);
             $genericType->setId($request->id);
@@ -59,35 +61,34 @@ class GenericTypeController extends Controller
             $this->_genericTypeManager->addGenericType($genericType);
 
             return $this->jsonSuccessResult(null);
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return $this->jsonFaultResult([$e->getMessage()]);
         }
 
     }
 
-    public function deleteGenericType(Request $request){
-        try{
+    public function deleteGenericType(Request $request)
+    {
+        try {
             $genericTypeId = $request->id;
             $this->_genericTypeManager->deleteGenericType($genericTypeId);
 
             return $this->jsonSuccessResult(null);
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return $this->jsonFaultResult([$e->getMessage()]);
         }
     }
 
-    public function editGenericType(Request $request){
-        try{
+    public function editGenericType(Request $request)
+    {
+        try {
             $newGenericType = new GenericType();
             $newGenericType->setId($request->id);
             $newGenericType->setName($request->name);
 
             $this->_genericTypeManager->editGenericType($newGenericType);
             return $this->jsonSuccessResult(null);
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return $this->jsonFaultResult([$e->getMessage()]);
         }
     }

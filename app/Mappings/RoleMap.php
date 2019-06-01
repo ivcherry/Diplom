@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Mappings;
 
+use App\Entities\Role;
+use App\Entities\User;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
-use \App\Entities\Role;
-use App\Entities\User;
+
 class RoleMap extends EntityMapping
 {
 

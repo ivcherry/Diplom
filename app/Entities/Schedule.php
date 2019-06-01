@@ -2,9 +2,6 @@
 
 namespace App\Entities;
 
-use Faker\Provider\DateTime;
-use JsonSerializable;
-
 class Schedule
 {
     protected $id;

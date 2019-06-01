@@ -2,13 +2,13 @@
 
 namespace App\BusinessLogic;
 
-use App\Entities\User;
 use App\Entities\Role;
+use App\Entities\User;
 use App\Repositories\UnitOfWork\UnitOfWork;
 use App\ViewModels\UserViewModel;
+use Doctrine\Common\Collections\ArrayCollection;
 use Exception;
 use Illuminate\Support\Facades\Auth;
-use Doctrine\Common\Collections\ArrayCollection;
 
 
 class UserManager
@@ -74,7 +74,9 @@ class UserManager
     {
 
         $user = $this->_unitOfWork->userRepository()->get($userId);
-        if (!isset($user)) { throw new Exception("Пользователь с $userId не найдет"); }
+        if (!isset($user)) {
+            throw new Exception("Пользователь с $userId не найдет");
+        }
 
         $user->resetRoles();
 
@@ -84,7 +86,7 @@ class UserManager
         foreach ($rolesToAdd as $roleId) {
             $role = $this->_unitOfWork->roleRepository()->get($roleId);
             if (isset($role)) {
-                    $user->addRole($role);
+                $user->addRole($role);
             }
         }
 
@@ -160,36 +162,38 @@ class UserManager
         return $this->_unitOfWork->userRepository()->all();
     }
 
-    public function editUser(User $newUser){
-        if(empty($newUser->getId())){
-          throw new Exception("Невозможно изменить. Не указан идентификатор");
+    public function editUser(User $newUser)
+    {
+        if (empty($newUser->getId())) {
+            throw new Exception("Невозможно изменить. Не указан идентификатор");
         }
 
-        if(empty($newUser->getFullName())){
-          throw new Exception("Невозможно изменить. Не указано имя");
+        if (empty($newUser->getFullName())) {
+            throw new Exception("Невозможно изменить. Не указано имя");
         }
         $this->_unitOfWork->userRepository()->update($newUser);
         $this->_unitOfWork->commit();
     }
 
-    public function deleteUser($id){
-        if(empty($id)){
-          throw new Exception("Невозможно удалить. Отсуствует идентификатор.");
+    public function deleteUser($id)
+    {
+        if (empty($id)) {
+            throw new Exception("Невозможно удалить. Отсуствует идентификатор.");
         }
 
         $user = $this->_unitOfWork->userRepository()->get($id);
-        if(!isset($feature)){
-          throw new Exception("Невозможно удалить. Идентификатор $id не найден.");
+        if (!isset($feature)) {
+            throw new Exception("Невозможно удалить. Идентификатор $id не найден.");
         }
         $this->_unitOfWork->userRepository()->delete($user);
         $this->_unitOfWork->commit();
     }
 
-    public function getPaginetedUsers($pageSize, $pageNumber){
+    public function getPaginetedUsers($pageSize, $pageNumber)
+    {
         $users = new ArrayCollection();
         $paginatedUsers = $this->_unitOfWork->userRepository()->getPaginatedUsers($pageSize, $pageNumber);
-        foreach($paginatedUsers->getData() as $user)
-        {
+        foreach ($paginatedUsers->getData() as $user) {
             $users->add($user->jsonSerialize());
         }
         $paginatedUsers->setData($users->toArray());

@@ -1,5 +1,7 @@
 <?php
+
 namespace App\ViewModels;
+
 use App\Entities\Type;
 use JsonSerializable;
 
@@ -62,11 +64,13 @@ class TypeViewModel implements JsonSerializable
         $this->name = $name;
     }
 
-    public function getGenericTypeName(){
+    public function getGenericTypeName()
+    {
         return $this->genericTypeName;
     }
 
-    public function fillFromType(Type $type){
+    public function fillFromType(Type $type)
+    {
         $this->id = $type->getId();
         $this->name = $type->getName();
         $this->genericTypeId = $type->getGenericType()->getId();

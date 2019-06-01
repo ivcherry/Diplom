@@ -4,23 +4,23 @@ namespace App\Repositories\UnitOfWork;
 
 
 use App\Repositories\CompatibilityRepository;
-use App\Repositories\NewsRepository;
-use App\Repositories\PageContentRepository;
-use App\Repositories\SaleRepository;
-use Doctrine\ORM\EntityManager;
-use App\Repositories\ProductRepository;
-use App\Repositories\TypeRepository;
+use App\Repositories\FeatureRepository;
 use App\Repositories\GenericTypeRepository;
-use App\Repositories\UserRepository;
-use App\Repositories\RoleRepository;
-use App\Repositories\ReviewRepository;
+use App\Repositories\NewsRepository;
+use App\Repositories\OrderRepository;
+use App\Repositories\PageContentRepository;
 use App\Repositories\PhotoRepository;
 use App\Repositories\ProductFeatureRepository;
-use App\Repositories\FeatureRepository;
-use App\Repositories\OrderRepository;
 use App\Repositories\ProductOrderRepository;
+use App\Repositories\ProductRepository;
+use App\Repositories\ReviewRepository;
+use App\Repositories\RoleRepository;
+use App\Repositories\SaleRepository;
 use App\Repositories\ScheduleRepository;
+use App\Repositories\TypeRepository;
+use App\Repositories\UserRepository;
 use App\Repositories\WorkSchedulerRepository;
+use Doctrine\ORM\EntityManager;
 
 class UnitOfWork
 {
@@ -49,7 +49,8 @@ class UnitOfWork
     private $_workSchedulerRepo;
     private $_compatibilityRepo;
 
-    public function compatibilityRepo(){
+    public function compatibilityRepo()
+    {
         if ($this->_compatibilityRepo == null) {
             $this->_compatibilityRepo = new CompatibilityRepository($this->_em);
         }
@@ -63,6 +64,7 @@ class UnitOfWork
         }
         return $this->_reviewRepo;
     }
+
     public function workSchedulerRepository()
     {
         if ($this->_workSchedulerRepo == null) {
@@ -86,6 +88,7 @@ class UnitOfWork
         }
         return $this->_newsRepo;
     }
+
     public function saleRepository()
     {
         if ($this->_saleRepo == null) {
@@ -101,6 +104,7 @@ class UnitOfWork
         }
         return $this->_featureRepo;
     }
+
     public function orderRepository()
     {
         if ($this->_orderRepo == null) {
@@ -116,6 +120,7 @@ class UnitOfWork
         }
         return $this->_productFeatureRepo;
     }
+
     public function productOrderRepository()
     {
         if ($this->_productOrderRepo == null) {
@@ -173,8 +178,9 @@ class UnitOfWork
         return $this->_genericTypeRepo;
     }
 
-    public function pageContentRepository(){
-        if($this->_pageContentRepo == null){
+    public function pageContentRepository()
+    {
+        if ($this->_pageContentRepo == null) {
             $this->_pageContentRepo = new PageContentRepository($this->_em);
         }
         return $this->_pageContentRepo;

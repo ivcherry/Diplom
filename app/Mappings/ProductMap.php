@@ -1,13 +1,13 @@
 <?php
+
 namespace App\Mappings;
 
+use App\Entities\Photo;
+use App\Entities\Product;
+use App\Entities\Review;
+use App\Entities\Type;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
-use App\Entities\Product;
-use App\Entities\Type;
-use App\Entities\Review;
-use App\Entities\Photo;
-use App\Entities\ProductFeature;
 
 class ProductMap extends EntityMapping
 {
@@ -34,7 +34,7 @@ class ProductMap extends EntityMapping
         $builder->manyToOne(Type::class)->inversedBy('products')->fetchLazy();
         $builder->oneToMany(Review::class)->mappedBy('product')->fetchLazy();
         $builder->oneToMany(Photo::class)->mappedBy('product')->fetchLazy();
-        $builder->oneToMany('ProductFeature','features')->mappedBy('product');
-        $builder->oneToMany('ProductOrder','orders')->mappedBy('product');
+        $builder->oneToMany('ProductFeature', 'features')->mappedBy('product');
+        $builder->oneToMany('ProductOrder', 'orders')->mappedBy('product');
     }
 }

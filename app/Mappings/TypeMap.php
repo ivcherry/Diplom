@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Mappings;
 
-use App\Entities\Type;
+use App\Entities\Feature;
 use App\Entities\GenericType;
 use App\Entities\Product;
-use App\Entities\Feature;
+use App\Entities\Type;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
 
@@ -27,6 +28,6 @@ class TypeMap extends EntityMapping
         $builder->string('name')->nullable()->length(30)->unique();
         $builder->hasMany(Product::class)->mappedBy('type')->fetchLazy();
         $builder->manyToOne(GenericType::class)->inversedBy('types');
-        $builder->manyToMany(Feature::class,'features')->mappedBy('types');
+        $builder->manyToMany(Feature::class, 'features')->mappedBy('types');
     }
 }

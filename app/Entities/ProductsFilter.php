@@ -2,7 +2,8 @@
 
 namespace App\Entities;
 
-class ProductsFilter {
+class ProductsFilter
+{
     private $typeId;
     private $productName;
     private $orderByPrice;

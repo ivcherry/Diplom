@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\BusinessLogic\FeatureManager;
+use App\Entities\Feature;
 use App\Http\Controllers\Controller;
 use App\ViewModels\FeatureViewModel;
-use Illuminate\Http\Request;
-use App\Entities\Feature;
 use Exception;
+use Illuminate\Http\Request;
 
 class FeatureController extends Controller
 {
@@ -23,7 +23,8 @@ class FeatureController extends Controller
         return view('admin.features.index');
     }
 
-    public function getAllFeatures(Request $request){
+    public function getAllFeatures(Request $request)
+    {
         $response = $this->_featureManager->getAllFeatures();
         return ($response);
     }
@@ -38,8 +39,9 @@ class FeatureController extends Controller
         return response($view);
     }
 
-    public function addFeature(Request $request){
-        try{
+    public function addFeature(Request $request)
+    {
+        try {
             $feature = new Feature();
             $feature->setName($request->name);
             $feature->setId($request->id);
@@ -47,35 +49,34 @@ class FeatureController extends Controller
             $this->_featureManager->addFeature($feature);
 
             return $this->jsonSuccessResult(null);
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return $this->jsonFaultResult([$e->getMessage()]);
         }
 
     }
 
-    public function deleteFeature(Request $request){
-        try{
+    public function deleteFeature(Request $request)
+    {
+        try {
             $featureId = $request->id;
             $this->_featureManager->deleteFeature($featureId);
 
             return $this->jsonSuccessResult(null);
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return $this->jsonFaultResult([$e->getMessage()]);
         }
     }
 
-    public function editFeature(Request $request){
-        try{
+    public function editFeature(Request $request)
+    {
+        try {
             $newFeature = new Feature();
             $newFeature->setId($request->id);
             $newFeature->setName($request->name);
 
             $this->_featureManager->editFeature($newFeature);
             return $this->jsonSuccessResult(null);
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return $this->jsonFaultResult([$e->getMessage()]);
         }
     }
@@ -87,7 +88,8 @@ class FeatureController extends Controller
         return ['features' => $paginatedFeatures->getData(), 'total' => $paginatedFeatures->getCount()];
     }
 
-    public function getFeaturesByTypeId(Request $request, $typeId){
+    public function getFeaturesByTypeId(Request $request, $typeId)
+    {
         $features = $this->_featureManager->getFeaturesByTypeId($typeId);
 
         return $features;

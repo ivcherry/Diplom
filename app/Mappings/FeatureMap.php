@@ -2,12 +2,11 @@
 
 namespace App\Mappings;
 
-use App\Entities\Product;
+use App\Entities\Feature;
+use App\Entities\ProductFeature;
+use App\Entities\Type;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
-use App\Entities\Feature;
-use App\Entities\Type;
-use App\Entities\ProductFeature;
 
 
 class FeatureMap extends EntityMapping
@@ -34,8 +33,8 @@ class FeatureMap extends EntityMapping
 
         $builder->string('name')->length('100');
 
-        $builder->manyToMany(Type::class,'types')->inversedBy('features')->joinTable('type_feature');
-        $builder->oneToMany(ProductFeature::class,'products')->mappedBy('feature');
+        $builder->manyToMany(Type::class, 'types')->inversedBy('features')->joinTable('type_feature');
+        $builder->oneToMany(ProductFeature::class, 'products')->mappedBy('feature');
 
     }
 }

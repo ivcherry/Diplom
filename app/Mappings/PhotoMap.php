@@ -7,6 +7,7 @@
  */
 
 namespace App\Mappings;
+
 use App\Entities\Photo;
 use App\Entities\Product;
 use LaravelDoctrine\Fluent\EntityMapping;
@@ -18,6 +19,7 @@ class PhotoMap extends EntityMapping
     {
         return Photo::class;
     }
+
     public function map(Fluent $builder)
     {
         $builder->increments('id');

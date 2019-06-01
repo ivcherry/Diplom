@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Client;
 use App\BusinessLogic\GenericTypeManager;
 use App\BusinessLogic\ProductManager;
 use App\BusinessLogic\TypeManager;
-use App\Entities\Type;
-use App\Http\Controllers\Controller;
 use App\Entities\ProductsFilter;
+use App\Http\Controllers\Controller;
 use Doctrine\Common\Collections\ArrayCollection;
 use Illuminate\Http\Request;
 use Session;
 
-class ProductsController extends Controller{
+class ProductsController extends Controller
+{
 
     private $_productManager;
     private $_typeManager;
@@ -25,7 +25,8 @@ class ProductsController extends Controller{
         $this->_genericTypeManager = $genericTypeManager;
     }
 
-    public function getAllProducts(Request $request){
+    public function getAllProducts(Request $request)
+    {
         $filter = $request->filter;
         $productsFilter = new ProductsFilter();
         $productsFilter->setProductName($filter['productName']);
@@ -38,17 +39,19 @@ class ProductsController extends Controller{
         return ['products' => $paginatedProducts->getData(), 'total' => $paginatedProducts->getCount()];
     }
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $subCategoryId = $request->subCategory;
         $productName = $request->productName;
         $orderByPrice = $request->orderByPrice;
         $type = $this->_typeManager->getTypeEntityById($subCategoryId);
 
         $filter = json_encode(['subCategory' => $subCategoryId, 'productName' => $productName, 'orderByPrice' => $orderByPrice]);
-        return view('client.products.products', compact('filter','type'));
+        return view('client.products.products', compact('filter', 'type'));
     }
 
-    public function showProduct($id){
+    public function showProduct($id)
+    {
 
         $product = $this->_productManager->getProductById($id);
         $type = $product->getType();
@@ -57,16 +60,16 @@ class ProductsController extends Controller{
         $isInCompare = false;
         $compareAllowed = true;
 
-        if(Session::has('cart')){
+        if (Session::has('cart')) {
             $cart = Session::get('cart');
             $productsIds = new ArrayCollection($cart->getProductsIds());
 
-            if($productsIds->contains(strval($product->getId()))){
+            if ($productsIds->contains(strval($product->getId()))) {
                 $isInCart = true;
             }
         }
 
-        if(Session::has('compareProducts')){
+        if (Session::has('compareProducts')) {
             $compare = Session::get('compareProducts');
             $compareProductsIds = new ArrayCollection($compare->getProdIds());
             $firstProd = $this->_productManager->getProductById($compare->getProdIds()[0]);
@@ -74,7 +77,7 @@ class ProductsController extends Controller{
             if ($type->getId() != $firstProd->getType()->getId()) {
                 $compareAllowed = false;
             }
-            if($compareProductsIds->contains(strval($product->getId()))) {
+            if ($compareProductsIds->contains(strval($product->getId()))) {
                 $isInCompare = true;
             }
         }
@@ -82,14 +85,16 @@ class ProductsController extends Controller{
         return view('client.products.show', compact('product', 'features', 'isInCart', 'isInCompare', 'compareAllowed'));
     }
 
-    public function categoryView(Request $request){
+    public function categoryView(Request $request)
+    {
         $genericTypeId = $request->categoryId;
         $genericType = $this->_genericTypeManager->getGenericTypeEntityById($genericTypeId);
 
         return view('client.products.category', ['genericType' => $genericType]);
     }
 
-    public function catalogView(Request $request){
+    public function catalogView(Request $request)
+    {
         $genericTypes = $this->_genericTypeManager->getAllGenericTypesInCollection();
 
         return view('client.products.catalog', ['genericTypes' => $genericTypes]);

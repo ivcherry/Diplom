@@ -1,4 +1,4 @@
-/* =============== МОИ СТИЛИ ==================*/
+
 .sidebar, .content, .footer {
     padding: 0px;
     margin: 0px;
@@ -54,10 +54,6 @@
 .admin_menu li:hover {
     background-color: #263238;
 }
-
-
-
-
 
 
 /* ====== Основное содержание страницы ===== */
@@ -192,14 +188,6 @@
 }
 
 
-
-
-
-
-
-
-
-
 .photos {
     overflow-y: scroll;
     -ms-overflow-y: scroll;
@@ -243,15 +231,7 @@
 }
 
 
-
-
-
-
-
-
-
-
-/* ======== МОИ СТИЛИ ================*/
+/* ========================*/
 .list-inline {
     display: flex;
     flex-direction: column;
@@ -273,10 +253,6 @@
     margin: 5px;
     width: 300px !important;
 }
-
-
-
-
 
 
 /* ===== buttons ======*/
@@ -320,6 +296,10 @@
     margin: 0 15px;
 }
 
+.fas {
+    color: #fff;
+}
+
 .btn-modal--success {
     background-color: #00C851;
     height: 35px;
@@ -356,13 +336,6 @@
     width: 100px;
 }
 
-.fas {
-    color: #fff;
-}
-
-
-
-
 
 /* ========== Формы ================*/
 .form-control {
@@ -386,10 +359,3 @@
     margin: 0 20px;
 }
 
-
-.footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-}

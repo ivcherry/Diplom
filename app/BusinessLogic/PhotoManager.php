@@ -7,6 +7,7 @@
  */
 
 namespace App\BusinessLogic;
+
 use App\Repositories\UnitOfWork\UnitOfWork;
 
 class PhotoManager
@@ -18,7 +19,8 @@ class PhotoManager
         $this->_unitOfWork = $unitOfWork;
     }
 
-    public function getPhotoById($id){
+    public function getPhotoById($id)
+    {
         return $this->_unitOfWork->photoRepository()->get($id);
     }
 }

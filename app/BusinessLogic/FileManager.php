@@ -5,15 +5,16 @@ namespace App\BusinessLogic;
 
 use Illuminate\Support\Facades\Storage;
 
-class FileManager {
+class FileManager
+{
 
-    public function saveFileInStorage($path, $file){
+    public function saveFileInStorage($path, $file)
+    {
         $filePath = Storage::putFile($path, $file);
 
         $temp = explode("/", $filePath);
         $temp[0] = "";
 
         return implode('/', $temp);
-
     }
 }

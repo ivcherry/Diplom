@@ -4,7 +4,8 @@ namespace App\Entities;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-class Cart{
+class Cart
+{
     private $productsInfo;
     private $productsCount;
     private $totalSum;
@@ -16,23 +17,24 @@ class Cart{
         $this->totalSum = 0;
     }
 
-    public function addProduct($productInfo){
-        if(!$this->productsInfo->isEmpty()){
-            $isExists = $this->productsInfo->exists(function ($key, $element) use($productInfo){
-                return  $element->productId === $productInfo->productId;
+    public function addProduct($productInfo)
+    {
+        if (!$this->productsInfo->isEmpty()) {
+            $isExists = $this->productsInfo->exists(function ($key, $element) use ($productInfo) {
+                return $element->productId === $productInfo->productId;
             });
-            if(!$isExists){
+            if (!$isExists) {
                 $this->productsInfo->add($productInfo);
                 $this->productsCount++;
             }
-        }
-        else{
+        } else {
             $this->productsInfo->add($productInfo);
             $this->productsCount++;
         }
     }
 
-    public function getProductsInfo(){
+    public function getProductsInfo()
+    {
         return $this->productsInfo;
     }
 
@@ -40,10 +42,10 @@ class Cart{
     {
         $prodIds = new ArrayCollection();
 
-        if(!$this->productsInfo->isEmpty()){
-           foreach ($this->productsInfo as $productInfo){
-               $prodIds->add($productInfo->productId);
-           }
+        if (!$this->productsInfo->isEmpty()) {
+            foreach ($this->productsInfo as $productInfo) {
+                $prodIds->add($productInfo->productId);
+            }
         }
         return $prodIds->toArray();
     }
@@ -53,24 +55,26 @@ class Cart{
         return $this->productsCount;
     }
 
-    public function deleteProduct($productId){
-        if(!$this->productsInfo->isEmpty()){
-            $removableProductsInfo = $this->productsInfo->filter(function ($element) use($productId){
-                return  $element->productId === $productId;
+    public function deleteProduct($productId)
+    {
+        if (!$this->productsInfo->isEmpty()) {
+            $removableProductsInfo = $this->productsInfo->filter(function ($element) use ($productId) {
+                return $element->productId === $productId;
             });
-            if(!$removableProductsInfo->isEmpty()){
+            if (!$removableProductsInfo->isEmpty()) {
                 $this->productsInfo->removeElement($removableProductsInfo->first());
                 $this->productsCount--;
             }
         }
     }
 
-    public function updateProductInfo($productInfo){
-        if(!$this->productsInfo->isEmpty()){
-            $editableProductsInfo = $this->productsInfo->filter(function ($element) use($productInfo){
-                return  $element->productId === $productInfo->productId;
+    public function updateProductInfo($productInfo)
+    {
+        if (!$this->productsInfo->isEmpty()) {
+            $editableProductsInfo = $this->productsInfo->filter(function ($element) use ($productInfo) {
+                return $element->productId === $productInfo->productId;
             });
-            if(!$editableProductsInfo->isEmpty()){
+            if (!$editableProductsInfo->isEmpty()) {
                 $this->productsInfo->removeElement($editableProductsInfo->first());
                 $this->productsInfo->add($productInfo);
             }

@@ -10,10 +10,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\BusinessLogic\NewsManager;
 use App\Entities\News;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class NewsController extends Controller

@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Base\GenericRepository;
-use Doctrine\ORM\EntityManager;
 use App\Entities\GenericType;
 use App\Entities\PaginationResult;
+use App\Repositories\Base\GenericRepository;
+use Doctrine\ORM\EntityManager;
 
 
 class GenericTypeRepository extends GenericRepository
@@ -20,13 +20,14 @@ class GenericTypeRepository extends GenericRepository
         return $this->repo->findOneBy(['name' => $name]);
     }
 
-    public function getPaginatedGenericTypes($pageSize,$pageNumber){
+    public function getPaginatedGenericTypes($pageSize, $pageNumber)
+    {
         $query = $this->repo->createQueryBuilder($this->model);
 
         $query = $query
-            ->orderBy($this->model.'.id')
+            ->orderBy($this->model . '.id')
             ->setMaxResults($pageSize)
-            ->setFirstResult($pageSize*($pageNumber-1))
+            ->setFirstResult($pageSize * ($pageNumber - 1))
             ->getQuery();
         $genericTypes = $query->execute();
 

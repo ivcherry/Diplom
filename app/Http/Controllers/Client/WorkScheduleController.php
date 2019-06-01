@@ -8,18 +8,9 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\BusinessLogic\OrderManager;
-use App\BusinessLogic\UserManager;
 use App\BusinessLogic\WorkSchedulerManager;
-use App\Entities\Order;
-use App\Entities\Type;
 use App\Http\Controllers\Controller;
-use App\BusinessLogic\TypeManager;
 use Illuminate\Http\Request;
-use App\ViewModels\TypeViewModel;
-use Exception;
-use Illuminate\Support\Facades\Validator;
-use App\Repositories\UnitOfWork\UnitOfWork;
 
 class WorkScheduleController extends Controller
 {
@@ -29,6 +20,7 @@ class WorkScheduleController extends Controller
     {
         $this->_workScheduleManager = $workSchedulerManager;
     }
+
     public function getAllWorkScheduler(Request $request)
     {
 
@@ -40,7 +32,7 @@ class WorkScheduleController extends Controller
     public function updateState(Request $request, $id)
     {
         $shId = $request->id_work_scheduler;
-        if(empty($shId)){
+        if (empty($shId)) {
             $shId = $id;
         }
         $this->_workScheduleManager->updateStateBusy($shId);

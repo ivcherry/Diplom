@@ -7,9 +7,10 @@
  */
 
 namespace App\Mappings;
-use App\Entities\WorkScheduler;
+
 use App\Entities\Order;
 use App\Entities\User;
+use App\Entities\WorkScheduler;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
 
@@ -19,6 +20,7 @@ class WorkSchedulerMap extends EntityMapping
     {
         return WorkScheduler::class;
     }
+
     public function map(Fluent $builder)
     {
         $builder->increments('id');

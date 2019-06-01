@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\BusinessLogic\TypeManager;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Http\Request;
 
-class CompatibilityController extends Controller{
+class CompatibilityController extends Controller
+{
 
     private $_typeManager;
 
@@ -15,17 +16,21 @@ class CompatibilityController extends Controller{
     {
         $this->_typeManager = $typeManager;
     }
-    public function index(){
+
+    public function index()
+    {
         return view('admin.compatibilities.index');
     }
 
-    public function getPaginatedCompatibilities(Request $request){
+    public function getPaginatedCompatibilities(Request $request)
+    {
         $paginatedResult = $this->_typeManager->getPaginatedCompatibilities($request->pageSize, $request->page);
 
         return ['compatibilities' => $paginatedResult->getData(), 'total' => $paginatedResult->getCount()];
     }
 
-    public function getCompatibilityById(Request $request, $id){
+    public function getCompatibilityById(Request $request, $id)
+    {
 
         $compatibilityId = $request->id;
 
@@ -35,32 +40,32 @@ class CompatibilityController extends Controller{
         return response($view);
     }
 
-    public function deleteCompatibility(Request $request){
+    public function deleteCompatibility(Request $request)
+    {
 
-        try{
+        try {
 
             $compatibilityId = $request->id;
             $this->_typeManager->deleteCompatibilityById($compatibilityId);
 
             return $this->jsonSuccessResult();
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return $this->jsonFaultResult($e->getMessage());
         }
     }
 
-    public function addCompatibility(Request $request){
-        try{
+    public function addCompatibility(Request $request)
+    {
+        try {
             $rule = $request->rule;
             $firstTypeId = $request->firstTypeId;
-            $secondTypeId  = $request->secondTypeId;
+            $secondTypeId = $request->secondTypeId;
             $firstFeatureId = $request->firstFeatureId;
             $secondFeatureId = $request->secondFeatureId;
 
             $this->_typeManager->addCompatibility($firstTypeId, $secondTypeId, $firstFeatureId, $secondFeatureId, $rule);
             return $this->jsonSuccessResult();
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return $this->jsonFaultResult($e->getMessage());
         }
 

@@ -3,7 +3,6 @@
 namespace App\BusinessLogic;
 
 use App\Entities\Feature;
-use App\Entities\Type;
 use App\Repositories\UnitOfWork\UnitOfWork;
 use Doctrine\Common\Collections\ArrayCollection;
 use Exception;
@@ -29,8 +28,7 @@ class FeatureManager
 
     public function getFeatureByName($name)
     {
-        if (!empty($name))
-        {
+        if (!empty($name)) {
             return $this->_unitOfWork->featureRepository()->where("features.name like %$name%");
         }
     }
@@ -38,57 +36,59 @@ class FeatureManager
     public function addFeature(Feature $feature)
     {
 
-      if (empty($feature->getName()))
-      {
-          throw new Exception("Невозможно добавить характеристику с пустым наименованием");
-      }
-      $this->_unitOfWork->featureRepository()->create($feature);
-      $this->_unitOfWork->commit();
+        if (empty($feature->getName())) {
+            throw new Exception("Невозможно добавить характеристику с пустым наименованием");
+        }
+        $this->_unitOfWork->featureRepository()->create($feature);
+        $this->_unitOfWork->commit();
 
     }
 
 
-    public function deleteFeature($id){
-        if(empty($id)){
-          throw new Exception("Невозможно удалить. Отсуствует идентификатор.");
+    public function deleteFeature($id)
+    {
+        if (empty($id)) {
+            throw new Exception("Невозможно удалить. Отсуствует идентификатор.");
         }
 
         $feature = $this->_unitOfWork->featureRepository()->get($id);
-        if(!isset($feature)){
-          throw new Exception("Невозможно удалить. Идентификатор $id не найден.");
+        if (!isset($feature)) {
+            throw new Exception("Невозможно удалить. Идентификатор $id не найден.");
         }
         $this->_unitOfWork->featureRepository()->delete($feature);
         $this->_unitOfWork->commit();
     }
 
-    public function editFeature(Feature $newFeature){
-        if(empty($newFeature->getId())){
-          throw new Exception("Невозможно изменить. Не указан идентификатор");
+    public function editFeature(Feature $newFeature)
+    {
+        if (empty($newFeature->getId())) {
+            throw new Exception("Невозможно изменить. Не указан идентификатор");
         }
 
-        if(empty($newFeature->getName())){
-          throw new Exception("Невозможно изменить. Не указано наименование");
+        if (empty($newFeature->getName())) {
+            throw new Exception("Невозможно изменить. Не указано наименование");
         }
         $this->_unitOfWork->featureRepository()->update($newFeature);
         $this->_unitOfWork->commit();
     }
 
-    public function getPaginetedFeatures($pageSize, $pageNumber){
+    public function getPaginetedFeatures($pageSize, $pageNumber)
+    {
         $features = new ArrayCollection();
         $paginatedFeatures = $this->_unitOfWork->featureRepository()->getPaginatedFeatures($pageSize, $pageNumber);
-        foreach($paginatedFeatures->getData() as $feature)
-        {
+        foreach ($paginatedFeatures->getData() as $feature) {
             $features->add($feature->jsonSerialize());
         }
         $paginatedFeatures->setData($features->toArray());
         return $paginatedFeatures;
     }
 
-    public function getFeaturesByTypeId($typeId){
+    public function getFeaturesByTypeId($typeId)
+    {
         $type = $this->_unitOfWork->typeRepository()->get($typeId);
         $features = $type->getFeatures();
-        $features = $features->map(function($item){
-           return $item->jsonSerialize();
+        $features = $features->map(function ($item) {
+            return $item->jsonSerialize();
         });
 
         return $features->toArray();

@@ -7,6 +7,7 @@
  */
 
 namespace App\BusinessLogic;
+
 use App\Repositories\UnitOfWork\UnitOfWork;
 
 class ReviewManager
@@ -18,7 +19,8 @@ class ReviewManager
         $this->_unitOfWork = $unitOfWork;
     }
 
-    public function getReviewById($id){
+    public function getReviewById($id)
+    {
         return $this->_unitOfWork->reviewRepository()->get($id);
     }
 }

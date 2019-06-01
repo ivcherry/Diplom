@@ -31,12 +31,10 @@ class Role
 
     public function addUser(User $user)
     {
-        if ($this->users == null)
-        {
+        if ($this->users == null) {
             $this->users = new ArrayCollection();
         }
-        if ($this->users->contains($user))
-        {
+        if ($this->users->contains($user)) {
             return;
         }
         $this->users->add($user);

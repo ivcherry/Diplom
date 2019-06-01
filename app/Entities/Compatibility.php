@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Entities;
+
 use JsonSerializable;
 
-class Compatibility implements JsonSerializable{
+class Compatibility implements JsonSerializable
+{
 
     private $id;
     private $firstType;

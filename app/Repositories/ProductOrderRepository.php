@@ -7,9 +7,10 @@
  */
 
 namespace App\Repositories;
+
 use App\Entities\ProductOrder;
-use Doctrine\ORM\EntityManager;
 use App\Repositories\Base\GenericRepository;
+use Doctrine\ORM\EntityManager;
 
 class ProductOrderRepository extends GenericRepository
 {

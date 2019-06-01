@@ -7,9 +7,10 @@
  */
 
 namespace App\Repositories;
-use Doctrine\ORM\EntityManager;
-use App\Repositories\Base\GenericRepository;
+
 use App\Entities\Photo;
+use App\Repositories\Base\GenericRepository;
+use Doctrine\ORM\EntityManager;
 
 class PhotoRepository extends GenericRepository
 {

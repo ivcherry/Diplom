@@ -39,7 +39,6 @@ class Feature extends \App\Entities\Feature implements \Doctrine\ORM\Proxy\Proxy
     public static $lazyPropertiesDefaults = [];
 
 
-
     /**
      * @param \Closure $initializer
      * @param \Closure $cloner
@@ -48,17 +47,12 @@ class Feature extends \App\Entities\Feature implements \Doctrine\ORM\Proxy\Proxy
     {
 
         $this->__initializer__ = $initializer;
-        $this->__cloner__      = $cloner;
+        $this->__cloner__ = $cloner;
     }
 
 
-
-
-
-
-
     /**
-     * 
+     *
      * @return array
      */
     public function __sleep()
@@ -71,11 +65,11 @@ class Feature extends \App\Entities\Feature implements \Doctrine\ORM\Proxy\Proxy
     }
 
     /**
-     * 
+     *
      */
     public function __wakeup()
     {
-        if ( ! $this->__isInitialized__) {
+        if (!$this->__isInitialized__) {
             $this->__initializer__ = function (Feature $proxy) {
                 $proxy->__setInitializer(null);
                 $proxy->__setCloner(null);
@@ -83,7 +77,7 @@ class Feature extends \App\Entities\Feature implements \Doctrine\ORM\Proxy\Proxy
                 $existingProperties = get_object_vars($proxy);
 
                 foreach ($proxy->__getLazyProperties() as $property => $defaultValue) {
-                    if ( ! array_key_exists($property, $existingProperties)) {
+                    if (!array_key_exists($property, $existingProperties)) {
                         $proxy->$property = $defaultValue;
                     }
                 }
@@ -93,7 +87,7 @@ class Feature extends \App\Entities\Feature implements \Doctrine\ORM\Proxy\Proxy
     }
 
     /**
-     * 
+     *
      */
     public function __clone()
     {
@@ -172,7 +166,7 @@ class Feature extends \App\Entities\Feature implements \Doctrine\ORM\Proxy\Proxy
         return self::$lazyPropertiesDefaults;
     }
 
-    
+
     /**
      * {@inheritDoc}
      */
@@ -212,7 +206,7 @@ class Feature extends \App\Entities\Feature implements \Doctrine\ORM\Proxy\Proxy
     public function getId()
     {
         if ($this->__isInitialized__ === false) {
-            return (int)  parent::getId();
+            return (int)parent::getId();
         }
 
 

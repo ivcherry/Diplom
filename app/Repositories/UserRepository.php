@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Repositories;
 
+use App\Entities\PaginationResult;
+use App\Entities\User;
 use App\Repositories\Base\GenericRepository;
 use Doctrine\ORM\EntityManager;
-use App\Entities\User;
-use App\Entities\PaginationResult;
 
 class UserRepository extends GenericRepository
 {
@@ -18,13 +19,14 @@ class UserRepository extends GenericRepository
         return $this->repo->findOneBy(['email' => $email]);
     }
 
-    public function getPaginatedUsers($pageSize,$pageNumber){
+    public function getPaginatedUsers($pageSize, $pageNumber)
+    {
         $query = $this->repo->createQueryBuilder($this->model);
 
         $query = $query
-            ->orderBy($this->model.'.id')
+            ->orderBy($this->model . '.id')
             ->setMaxResults($pageSize)
-            ->setFirstResult($pageSize*($pageNumber-1))
+            ->setFirstResult($pageSize * ($pageNumber - 1))
             ->getQuery();
         $users = $query->execute();
 

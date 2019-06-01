@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers\Client;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use App\Http\Controllers\Controller;
-use App\BusinessLogic\FileManager;
+use App\BusinessLogic\FeatureManager;
 use App\BusinessLogic\ProductManager;
 use App\BusinessLogic\TypeManager;
-use App\BusinessLogic\FeatureManager;
-use App\ViewModels\FeatureViewModel;
-use App\Entities\Photo;
-use App\Entities\Product;
 use App\Entities\CompareProducts;
-use Exception;
+use App\Http\Controllers\Controller;
+use App\ViewModels\FeatureViewModel;
+use Doctrine\Common\Collections\ArrayCollection;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class CompareController extends Controller
@@ -32,15 +27,14 @@ class CompareController extends Controller
 
     public function index(Request $request)
     {
-        if (Session::has('compareProducts'))
-        {
-          $item = Session::get('compareProducts');
+        if (Session::has('compareProducts')) {
+            $item = Session::get('compareProducts');
 
-          $products = new ArrayCollection();
+            $products = new ArrayCollection();
 
             foreach ($item->getProdIds() as $id) {
-              $product = $this->_productManager->getProductById($id);
-              $products->add($product);
+                $product = $this->_productManager->getProductById($id);
+                $products->add($product);
             }
 
             $typeId = $products[0]->getType();
@@ -66,8 +60,7 @@ class CompareController extends Controller
             $addedProdId = $oldCompare->getProdIds()[0];
             $addedProduct = $this->_productManager->getProductById($addedProdId);
             $newProduct = $this->_productManager->getProductById($id);
-            if ($addedProduct->getType()->getId() == $newProduct->getType()->getId())
-            {
+            if ($addedProduct->getType()->getId() == $newProduct->getType()->getId()) {
                 $oldCompare->add($id);
             }
         } else {
@@ -80,13 +73,14 @@ class CompareController extends Controller
         return $this->jsonSuccessResult(['comparedCount' => $oldCompare->getComparedCount()]);
     }
 
-    public function clearAll(Request $request){
-          if(Session::has('compareProducts')){
-              Session::remove('compareProducts');
-              return $this->jsonSuccessResult(['comparedCount' => 0]);
-          } else {
-          return $this->jsonFaultResult('Ошибка удаления товара из сравнения');
-          }
+    public function clearAll(Request $request)
+    {
+        if (Session::has('compareProducts')) {
+            Session::remove('compareProducts');
+            return $this->jsonSuccessResult(['comparedCount' => 0]);
+        } else {
+            return $this->jsonFaultResult('Ошибка удаления товара из сравнения');
+        }
     }
 
 }

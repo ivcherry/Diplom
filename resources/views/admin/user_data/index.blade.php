@@ -2,11 +2,16 @@
 
 @section('content')
     <div class="admin container">
-      <div class="model-buttons">
-          <button id="delete" class="buttons-custom btn btn-default">Удалить</button>
-          <button id="edit" class="buttons-custom btn btn-default" type="button" data-toggle="modal" data-target="#editModal">Роли</button>
+        <div class="model-buttons">
+            <button id="delete" class="buttons-custom btn btn-default">
+                <i class="fas fa-trash-alt" style="margin-right: 5px"></i>Удалить
+            </button>
+            <button id="edit" class="buttons-custom btn btn-default" type="button" data-toggle="modal"
+                    data-target="#editModal">
+                <i class="fas fa-id-card" style="margin-right: 5px"></i>Роли
+            </button>
 
-      </div>
+        </div>
         <div class="model-processing">
             <div class="current-type-model" id="currentUserModel">
             </div>

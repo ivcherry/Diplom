@@ -19,33 +19,27 @@ class CheckUserRole
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next, $roles)
     {
-        try
-        {
+        try {
             $isValidRoute = $this->_userManager->checkCurrentUserToValidRoles($roles);
 
-            if ($isValidRoute)
-            {
+            if ($isValidRoute) {
                 return $next($request);
-            }
-            else
-            {
+            } else {
                 $defaultRoute = $this->_userManager
-                                ->getCurrentUserRoles()
-                                ->first()
-                                ->getName();
+                    ->getCurrentUserRoles()
+                    ->first()
+                    ->getName();
 
                 return redirect(UserRoles::getDefaultWayByRole($defaultRoute));
             }
 
-        }
-        catch (Exception $ex)
-        {
+        } catch (Exception $ex) {
             return redirect(UserRoles::getDefaultWayByRole(UserRoles::Guest));
         }
     }

@@ -3,26 +3,28 @@
 namespace App\Repositories;
 
 use App\Entities\Compatibility;
+use App\Entities\PaginationResult;
 use App\Repositories\Base\GenericRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
-use App\Entities\PaginationResult;
 
 
-class CompatibilityRepository extends GenericRepository{
+class CompatibilityRepository extends GenericRepository
+{
 
     public function __construct(EntityManager $entityManager)
     {
         parent::__construct($entityManager, Compatibility::class);
     }
 
-    public function getPaginated($pageSize,$pageNumber){
+    public function getPaginated($pageSize, $pageNumber)
+    {
         $query = $this->repo->createQueryBuilder($this->model);
 
         $query = $query
-            ->orderBy($this->model.'.id')
+            ->orderBy($this->model . '.id')
             ->setMaxResults($pageSize)
-            ->setFirstResult($pageSize*($pageNumber-1))
+            ->setFirstResult($pageSize * ($pageNumber - 1))
             ->getQuery();
         $compatibilities = $query->execute();
 
@@ -34,13 +36,14 @@ class CompatibilityRepository extends GenericRepository{
         return new PaginationResult($compatibilities, $count);
     }
 
-    public function getCompatibilitiesByTypesIds($firstTypeId, $secondTypeId){
+    public function getCompatibilitiesByTypesIds($firstTypeId, $secondTypeId)
+    {
         $query = $this->repo->createQueryBuilder('c');
 
         $query = $query->select('c')
-                    ->where('(c.firstType = :firstTypeId and c.secondType = :secondTypeId) or (c.firstType = :secondTypeId and c.secondType = :firstTypeId)')
-                    ->setParameters(['firstTypeId' => $firstTypeId, 'secondTypeId' => $secondTypeId])
-                    ->getQuery();
+            ->where('(c.firstType = :firstTypeId and c.secondType = :secondTypeId) or (c.firstType = :secondTypeId and c.secondType = :firstTypeId)')
+            ->setParameters(['firstTypeId' => $firstTypeId, 'secondTypeId' => $secondTypeId])
+            ->getQuery();
 
         $compatibilities = $query->execute();
 

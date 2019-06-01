@@ -10,12 +10,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\BusinessLogic\SaleManager;
 use App\Entities\Sale;
-use App\Entities\Type;
 use App\Http\Controllers\Controller;
-use App\BusinessLogic\TypeManager;
-use Illuminate\Http\Request;
-use App\ViewModels\TypeViewModel;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class SaleController extends Controller

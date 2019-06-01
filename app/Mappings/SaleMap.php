@@ -7,6 +7,7 @@
  */
 
 namespace App\Mappings;
+
 use App\Entities\Sale;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
@@ -17,6 +18,7 @@ class SaleMap extends EntityMapping
     {
         return Sale::class;
     }
+
     public function map(Fluent $builder)
     {
         $builder->increments('id');

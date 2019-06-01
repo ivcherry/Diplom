@@ -2,17 +2,27 @@
     <h3>Новость №{{$newsModel->getId()}}</h3>
     <table class="table">
         <thead>
-        <th><label for="name" class="header-label">Заголовок</label></th>
-        <th><label for="name" class="header-label">Краткое описание</label></th>
-        <th><label for="name" class="header-label">Полный текст новости</label></th>
-        <th><label for="name" class="header-label">Дата</label></th>
+        <tr>
+            <th><label for="name" class="header-label">Заголовок</label></th>
+            <th><label for="name" class="header-label">Краткое описание</label></th>
+            <th><label for="name" class="header-label">Полный текст новости</label></th>
+            <th><label for="name" class="header-label">Дата</label></th>
+        </tr>
         </thead>
         <tbody>
         <tr>
-            <td><span id="title">{{$newsModel->getTitle()}}</span></td>
-            <td><span id="summary">{{$newsModel->getSummary()}}</span></td>
-            <td><span id="text">{{$newsModel->getText()}}</span></td>
-            <td><span id="date">{{$newsModel->getDate()}}</span></td>
+            <td>
+                <div id="title">{{$newsModel->getTitle()}}</div>
+            </td>
+            <td>
+                <div id="summary">{{$newsModel->getSummary()}}</div>
+            </td>
+            <td>
+                <div id="text">{{$newsModel->getText()}}</div>
+            </td>
+            <td>
+                <div id="date">{{$newsModel->getDate()}}</div>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -24,7 +34,7 @@
 
         <div class="modal-content">
             <div class="modal-header">
-                Измененение новости № <strong>{{$newsModel->getId()}}</strong>
+                Измененение новости № {{$newsModel->getId()}}
             </div>
             <form id="editNewsForm">
                 <div class="modal-body">
@@ -39,12 +49,14 @@
                         </div>
                         <div class="form-group form-container">
                             <label for="name">Краткое содержание</label>
-                            <textarea type="text" name="summary" class="form-control" >{{$newsModel->getSummary()}}</textarea>
+                            <textarea type="text" name="summary"
+                                      class="form-control">{{$newsModel->getSummary()}}</textarea>
                         </div>
 
                         <div class="form-group form-container">
                             <label for="name">Текст</label>
-                            <textarea type="text" name="text" class="form-control" >{{$newsModel->getText()}}</textarea>
+                            <textarea type="text" name="text" class="form-control" cols="10"
+                                      rows="5">{{$newsModel->getText()}}</textarea>
                         </div>
 
                         <div class="form-group form-container">

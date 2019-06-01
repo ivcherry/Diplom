@@ -7,6 +7,7 @@
  */
 
 namespace App\Entities;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use JsonSerializable;
 
@@ -18,8 +19,7 @@ class GenericType implements JsonSerializable
 
     public function addGenericType(Type $type)
     {
-        if (!$this->types->contains($type))
-        {
+        if (!$this->types->contains($type)) {
             $type->setGenericType($this);
             $this->types->add($type);
         }

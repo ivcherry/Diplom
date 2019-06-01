@@ -7,13 +7,13 @@
         <div class="text-center">
             <h2>Оформление комплектации</h2>
         </div>
-        <div class="productBlock k-widget k-listview" id="productBlock" >
+        <div class="productBlock k-widget k-listview" id="productBlock">
             <div id="emptyProductCart" style={{empty($products)?"":"display:none"}}>
                 <p>Вы не выбрали ни одного товара. Для добавления товаров перейдите в <a href="/catalog">каталог</a></p>
             </div>
         </div>
 
-        <div id="productCart" >
+        <div id="productCart">
             @if(!empty($products))
                 <div class="shopping-result">
                     <div class="result-sum">
@@ -24,7 +24,8 @@
                         <div class="form-group">
                             <span><h3>Ваш телефон</h3></span>
                             <div>
-                                <input  name="phoneNumber" type='text' id="phoneNumber" class="form-control" style="width: 100%; height: inherit">
+                                <input name="phoneNumber" type='text' id="phoneNumber" class="form-control"
+                                       style="width: 100%; height: inherit">
                             </div>
                         </div>
                         <div class="">
@@ -32,9 +33,13 @@
                                 <span><h3>Выберите время получения заказа</h3></span>
                             </div>
                             <div class="form-inline">
-                                <label for="chooseReceivingTime"><button id="chooseReceivingTime" type="button" href="#dialog"
-                                                                         name="modal" class="btn btn-default">Выбрать</button></label>
-                                <input name='receivingTime' id="chooseReceivingTime" class="form-control readonly" style="width: 100%">
+                                <label for="chooseReceivingTime">
+                                    <button id="chooseReceivingTime" type="button" href="#dialog"
+                                            name="modal" class="btn btn-default">Выбрать
+                                    </button>
+                                </label>
+                                <input name='receivingTime' id="chooseReceivingTime" class="form-control readonly"
+                                       style="width: 100%">
                             </div>
                         </div>
                     </div>
@@ -43,20 +48,21 @@
                     </div>
                 </div>
                 @if(!empty($products))
-                <div class="text-center" >
-                    <button  id="showProducts" class="btn btn-default" style="width:100%;">Показать товары</button>
-                </div>
+                    <div class="text-center">
+                        <button id="showProducts" class="btn btn-default" style="width:100%;">Показать товары</button>
+                    </div>
                 @endif
                 <div class="productList" id="shoppingProductList" style="display:none">
                     @foreach($products as $product)
                         <div class="product">
-                            <input type="hidden" class="hiddenProductId" value="{{$product->getId()}}" >
+                            <input type="hidden" class="hiddenProductId" value="{{$product->getId()}}">
                             <div class="photo">
                                 <a class="" href="/product/{{$product->getId()}}">
                                     @if(!$product->getPhotos()->isEmpty())
-                                        <img src="/storage{{$product->getPhotos()->first()->getImage()}}" alt="{{$product->getName()}}" width="100" height="100"/>
+                                        <img src="/storage{{$product->getPhotos()->first()->getImage()}}"
+                                             alt="{{$product->getName()}}" width="100" height="100"/>
                                     @else
-                                        <img src="/css/Default/image-not-available.jpg" alt="фото не найдено" />
+                                        <img src="/css/Default/image-not-available.jpg" alt="фото не найдено"/>
                                     @endif
                                 </a>
                             </div>
@@ -95,16 +101,15 @@
                 });
                 order.orderPrice = $("#hiddenResultSum").val();
                 order.phone = $("#phoneNumber").val();
-                if(order.products.length > 0){
+                if (order.products.length > 0) {
                     $.post(
                         '/equipment/checkout',
                         {order: JSON.stringify(order)},
                         function (response) {
                             response = JSON.parse(response)[0];
-                            if(response.success){
+                            if (response.success) {
                                 window.location.replace("/thanksForPurchase");
-                            }
-                            else{
+                            } else {
                                 bootbox.alert(response.message)
                             }
                         });
@@ -131,7 +136,7 @@
 
         $(document).ready(function () {
 
-            $(".readonly").on('keydown paste', function(e){
+            $(".readonly").on('keydown paste', function (e) {
                 e.preventDefault();
             });
 
@@ -140,7 +145,7 @@
 
             $('button[name=modal]').click(function (e) {
                 // e.preventDefault();
-                $(this).attr('disabled',true);
+                $(this).attr('disabled', true);
 
                 $.get('/workSchedules', {}, function (response) {
                     let arrTimes = [];
@@ -177,31 +182,31 @@
                     table += '</tr></thead><tbody>';
 
 
-                    Object.keys(arrTableData).forEach(date=>{
+                    Object.keys(arrTableData).forEach(date => {
                         table += '<tr>';
-                    table += '<td>' + date + '</td>';
+                        table += '<td>' + date + '</td>';
 
-                    const times = arrTableData[date];
-                    Object.keys(times).forEach(time=>{
-                        const timeObj = times[time];
+                        const times = arrTableData[date];
+                        Object.keys(times).forEach(time => {
+                            const timeObj = times[time];
 
-                    if(timeObj.status !==1){
-                        table += `<td class="bg-danger" name='timeSlot' id= "${date + '__' + time+'-'+timeObj.id}"> </td>`
-                    }else{
-                        table += `<td class="bg-success" name='timeSlot' id= "${date + '__' + time+'-'+timeObj.id}"> </td>`
-                    }
-                });
+                            if (timeObj.status !== 1) {
+                                table += `<td class="bg-danger" name='timeSlot' id= "${date + '__' + time + '-' + timeObj.id}"> </td>`
+                            } else {
+                                table += `<td class="bg-success" name='timeSlot' id= "${date + '__' + time + '-' + timeObj.id}"> </td>`
+                            }
+                        });
 
-                    table += '</tr>';
+                        table += '</tr>';
 
-                });
+                    });
 
                     table += '</tbody> </table>';
                     $(".window").append(table);
 
 
                     $('td[class=bg-success]').click(function (e) {
-                        
+
 
                         if (!selectTimeSlot) {
                             $(this).removeClass('bg-success').addClass('bg-danger');
@@ -246,7 +251,7 @@
 
             $('.window .close').click(function (e) {
                 e.preventDefault();
-                $('button[name=modal]').attr('disabled',false);
+                $('button[name=modal]').attr('disabled', false);
                 const id = $('input[name=id_work_scheduler]').attr('value');
                 const url = `/workSchedules/${id}/updateState`;
                 $.ajax({
@@ -256,11 +261,11 @@
                     dataType: 'json',
                     success: data => {
 
-            },
-                error: err => {
+                    },
+                    error: err => {
 
-                }
-            });
+                    }
+                });
 
                 $('.table').remove();
                 $('#back, .window').hide();

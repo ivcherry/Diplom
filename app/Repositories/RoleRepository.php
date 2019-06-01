@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Entities\Role;
 use App\Repositories\Base\GenericRepository;
 use Doctrine\ORM\EntityManager;
-use App\Entities\Role;
 
 
 class RoleRepository extends GenericRepository

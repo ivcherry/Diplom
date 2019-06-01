@@ -6,7 +6,8 @@ use App\Entities\PageContent;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
 
-class PageContentMap extends EntityMapping{
+class PageContentMap extends EntityMapping
+{
 
     /**
      * Returns the fully qualified name of the class that this mapper maps.

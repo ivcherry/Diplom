@@ -8,11 +8,11 @@
 
 namespace App\Mappings;
 
+use App\Entities\Feature;
+use App\Entities\Product;
+use App\Entities\ProductFeature;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
-use App\Entities\ProductFeature;
-use App\Entities\Product;
-use App\Entities\Feature;
 
 class ProductFeatureMap extends EntityMapping
 {

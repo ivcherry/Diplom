@@ -5,7 +5,6 @@ namespace App\BusinessLogic;
 use App\Entities\Order;
 use App\Repositories\UnitOfWork\UnitOfWork;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Exception;
 
 class OrderManager
@@ -39,8 +38,7 @@ class OrderManager
         try {
             $this->_unitOfWork->orderRepository()->create($order);
             $this->_unitOfWork->commit();
-        }
-        catch (Exception $exception){
+        } catch (Exception $exception) {
             $name = $order->getTitle();
             throw new Exception("Категория с наименованием $name уже существует");
         }
@@ -60,33 +58,35 @@ class OrderManager
         return $paginatedTypes;
     }
 
-    public function edit(Order $order){
-        if(empty($order->getId())){
+    public function edit(Order $order)
+    {
+        if (empty($order->getId())) {
             throw new Exception("Невозможно изменить акцию. Не указан идентификатор");
         }
-        if(empty($order->getTitle())){
+        if (empty($order->getTitle())) {
             throw new Exception("Невозможно изменить акцию. Не указан заголовок");
         }
-        if(empty($order->getSummary())){
+        if (empty($order->getSummary())) {
             throw new Exception("Невозможно изменить акцию. Не указано краткое содержание");
         }
-        if(empty($order->getText())){
+        if (empty($order->getText())) {
             throw new Exception("Невозможно изменить акцию. Не указан текст");
         }
-        if(empty($order->getDate())){
+        if (empty($order->getDate())) {
             throw new Exception("Невозможно изменить акцию. Не указана дата");
         }
         $this->_unitOfWork->orderRepository()->update($order);
         $this->_unitOfWork->commit();
     }
 
-    public function delete($id){
-        if(empty($id)){
+    public function delete($id)
+    {
+        if (empty($id)) {
             throw new Exception("Невозможно удалить категрию товара. Отсуствует идентификатор категории товара.");
         }
 
         $order = $this->_unitOfWork->orderRepository()->get($id);
-        if(!isset($order)){
+        if (!isset($order)) {
             throw new Exception("Невозможно удалить категорию товара. Категория товара с идентификатором $id не найден.");
         }
         $this->_unitOfWork->orderRepository()->delete($order);

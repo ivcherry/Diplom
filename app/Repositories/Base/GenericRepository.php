@@ -2,9 +2,8 @@
 
 namespace App\Repositories\Base;
 
-use Doctrine\ORM\EntityManager;
 use App\Repositories\Interfaces\IRepository;
-use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\EntityManager;
 
 abstract class GenericRepository implements IRepository
 {

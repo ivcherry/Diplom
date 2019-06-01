@@ -7,9 +7,10 @@
  */
 
 namespace App\Repositories;
-use Doctrine\ORM\EntityManager;
-use App\Repositories\Base\GenericRepository;
+
 use App\Entities\Review;
+use App\Repositories\Base\GenericRepository;
+use Doctrine\ORM\EntityManager;
 
 class ReviewRepository extends GenericRepository
 {

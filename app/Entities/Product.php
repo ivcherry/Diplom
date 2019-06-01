@@ -2,9 +2,6 @@
 
 namespace App\Entities;
 
-use App\Entities\Review;
-use App\Entities\Photo;
-use App\Entities\ProductFeature;
 use Doctrine\Common\Collections\ArrayCollection;
 use JsonSerializable;
 
@@ -70,7 +67,8 @@ class Product implements JsonSerializable
         return $this->photos;
     }
 
-    public function getFeatures(){
+    public function getFeatures()
+    {
         return $this->features;
     }
 
@@ -100,7 +98,8 @@ class Product implements JsonSerializable
         $this->photos->add($photo);
     }
 
-    public function addFeature($feature){
+    public function addFeature($feature)
+    {
         if ($this->features == null) {
             $this->features = new ArrayCollection();
         }
@@ -110,7 +109,8 @@ class Product implements JsonSerializable
         $this->features->add($feature);
     }
 
-    public function addOrder($order){
+    public function addOrder($order)
+    {
         if ($this->orders == null) {
             $this->orders = new ArrayCollection();
         }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entities;
 
 class UserRoles
@@ -13,27 +14,26 @@ class UserRoles
 
     public static function getDefaultWayByRole($role)
     {
-        switch ($role)
-        {
+        switch ($role) {
             case self::Admin:
-            {
-                return '/admin';
-            }
+                {
+                    return '/admin';
+                }
 
             case self::Customer:
-            {
-                return '/';
-            }
+                {
+                    return '/';
+                }
 
             case self::Worker:
-            {
-                return '/worker';
-            }
+                {
+                    return '/worker';
+                }
 
             case self::Guest:
-            {
-                return '/login';
-            }
+                {
+                    return '/login';
+                }
         }
     }
 }

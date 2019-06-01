@@ -2,7 +2,8 @@
 
 namespace App\Entities;
 
-class PageContent{
+class PageContent
+{
 
     private $id;
     private $content;

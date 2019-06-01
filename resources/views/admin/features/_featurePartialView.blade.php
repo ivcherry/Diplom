@@ -1,6 +1,6 @@
 <div class="model-data">
-        <h3>Характеристика: <strong>{{$featureModel->getName()}}</strong></h3>
-<input type="hidden" id="featureId" value="{{$featureModel->getId()}}">
+    <h3>Характеристика: <strong>{{$featureModel->getName()}}</strong></h3>
+    <input type="hidden" id="featureId" value="{{$featureModel->getId()}}">
     <label for="name" class="name-nnn">Название:</label>
     <p style="font-size: 15px; margin-left: 20px">+&nbsp;&nbsp;{{$featureModel->getName()}}</p>
 </div>
@@ -15,7 +15,9 @@
             </div>
             <form id="editFeatureForm">
                 <div class="modal-body">
-                    <div class="errors alert alert-danger"><ul></ul></div>
+                    <div class="errors alert alert-danger">
+                        <ul></ul>
+                    </div>
                     <div class="row form-inline">
                         <input type="hidden" name="id" value="{{$featureModel->getId()}}">
                         <div class="form-group">

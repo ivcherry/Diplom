@@ -2,14 +2,12 @@
 
 namespace App\Mappings;
 
-use App\Entities\Product;
+use App\Entities\Order;
 use App\Entities\ProductOrder;
+use App\Entities\User;
 use App\Entities\WorkScheduler;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
-use App\Entities\Order;
-use App\Entities\User;
-use App\Entities\Type;
 
 
 class OrderMap extends EntityMapping
@@ -36,7 +34,7 @@ class OrderMap extends EntityMapping
         $builder->datetime('dateOfOrder');
         $builder->decimal('totalPrice')->nullable()->precision(10);
         $builder->manyToOne(User::class)->inversedBy('$orders');
-        $builder->oneToMany(ProductOrder::class,'products')->mappedBy('order');
+        $builder->oneToMany(ProductOrder::class, 'products')->mappedBy('order');
         $builder->oneToOne(WorkScheduler::class)->mappedBy('order');
     }
 }

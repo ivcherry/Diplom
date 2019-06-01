@@ -1,6 +1,6 @@
 @extends('client.layouts.clientLayout')
 @section('breadcrumbs')
-{{Breadcrumbs::render('equipment')}}
+    {{Breadcrumbs::render('equipment')}}
 @endsection
 @section('content')
     <div>
@@ -25,7 +25,7 @@
             <div class="photo">
                 <a class="" href="product/#= id#">
                     #if(productImage){#
-                    <img src="/storage#= productImage #" alt="#: name #" width="100" height="100"/>
+                    <img src="/storage#=productImage #" alt="#: name #" width="100" height="100"/>
                     #}else{#
                     <img src="/css/Default/image-not-available.jpg" alt="Фото отсутствует"/>
                     #}#
@@ -36,14 +36,14 @@
             </div>
             <div class="addToCompare">
                 <button class="btn add-to-compare-btn">
-                    <img src="/css/Default/compare.png" />
+                    <img src="/css/Default/compare.png"/>
 
                 </button>
             </div>
             <div class="addToCart">
 
-                <button class="btn add-to-cart-btn" >
-                        <span>Выбрать</span>
+                <button class="btn add-to-cart-btn">
+                    <span>Выбрать</span>
                 </button>
             </div>
             <div class="price">
@@ -68,8 +68,8 @@
         $(function () {
             var dataSource = new kendo.data.DataSource({
                 transport: {
-                    read:{
-                        url:'/equipment/getProductsByEquipmentStage',
+                    read: {
+                        url: '/equipment/getProductsByEquipmentStage',
                         dataType: 'json',
                         data: {
                             equipmentStage: $("#equipmentStage").val()
@@ -83,8 +83,7 @@
                                     $("#productList").hide();
                                     $("#productsPager").hide();
                                     $("#errorInfo").show();
-                                }
-                                else {
+                                } else {
                                     $("#productList").show();
                                     $("#productsPager").show();
                                     $("#errorInfo").hide();
@@ -99,8 +98,8 @@
                     data: 'products',
                     total: 'total'
                 },
-                serverPaging:true,
-                pageSize:5
+                serverPaging: true,
+                pageSize: 5
 
             });
             $("#productsPager").kendoPager({
@@ -115,13 +114,13 @@
             $(document).on('click', ".add-to-cart-btn", function () {
                 var product = $(this).closest('.product');
                 var productId = product.children('.product-id-hidden').val();
-                if(productId){
+                if (productId) {
                     $.post(
                         '/equipment/addToEquipment',
                         {prodId: productId, currentStage: $("#equipmentStage").val()},
                         function (response) {
                             response = JSON.parse(response)[0];
-                            if(response.success){
+                            if (response.success) {
                                 window.location = '/equipment';
                             }
                         }
@@ -131,14 +130,14 @@
             $(document).on('click', ".add-to-compare-btn", function () {
                 var product = $(this).closest('.product');
                 var productId = product.children('.product-id-hidden').val();
-                if(productId){
+                if (productId) {
                     $.post(
                         '/addToCompare',
                         {prodId: productId},
                         function (response) {
                             response = JSON.parse(response)[0];
-                            if(response.success){
-                                if(response.data.comparedCount) {
+                            if (response.success) {
+                                if (response.data.comparedCount) {
                                     $('.compare-product-count').text(response.data.comparedCount);
                                 }
                             }

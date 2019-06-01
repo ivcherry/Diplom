@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Entities;
+
 use Doctrine\Common\Collections\ArrayCollection;
-use App\Entities\GenericType;
-use App\Entities\Feature;
 use JsonSerializable;
 
 class Type implements JsonSerializable
@@ -75,8 +74,7 @@ class Type implements JsonSerializable
 
     public function addProduct(Product $product)
     {
-        if (!$this->products->contains($product))
-        {
+        if (!$this->products->contains($product)) {
             $product->setType($this);
             $this->products->add($product);
         }
@@ -94,16 +92,16 @@ class Type implements JsonSerializable
 
     public function addFeature(Feature $feature)
     {
-        if ($this->features->contains($feature))
-        {
+        if ($this->features->contains($feature)) {
             return;
         }
 
         $this->features->add($feature);
     }
 
-    public function deleteFeature(Feature $feature){
-        if($this->features->contains($feature)){
+    public function deleteFeature(Feature $feature)
+    {
+        if ($this->features->contains($feature)) {
             $this->features->removeElement($feature);
         }
     }
@@ -117,7 +115,7 @@ class Type implements JsonSerializable
      */
     public function jsonSerialize()
     {
-        return[
+        return [
             'name' => $this->getName(),
             'id' => $this->getId(),
             'genericTypes' => $this->getGenericType()->getName()

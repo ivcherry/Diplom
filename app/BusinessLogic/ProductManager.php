@@ -9,12 +9,11 @@ use App\Entities\Product;
 use App\Entities\ProductFeature;
 use App\Entities\ProductOrder;
 use App\Entities\ProductsFilter;
-use App\Entities\Type;
 use App\Repositories\UnitOfWork\UnitOfWork;
 use Doctrine\Common\Collections\ArrayCollection;
 use Exception;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductManager
 {
@@ -90,10 +89,10 @@ class ProductManager
             throw new Exception("Товар с идентификатором " . $id . " не найден");
         }
 
-        foreach($product->getPhotos() as $photo){
+        foreach ($product->getPhotos() as $photo) {
             $this->deleteProductPhoto($photo);
         }
-        Storage::deleteDirectory($this->storagePath.$product->getId());
+        Storage::deleteDirectory($this->storagePath . $product->getId());
 
         $this->_unitOfWork->productFeatureRepository()->deleteByProductId($product->getId());
         $this->_unitOfWork->productRepository()->delete($product);
@@ -141,38 +140,42 @@ class ProductManager
         $this->_unitOfWork->commit();
     }
 
-    public function deleteProductPhotoById($photoId){
-        if(empty($photoId)){
+    public function deleteProductPhotoById($photoId)
+    {
+        if (empty($photoId)) {
             throw new Exception("Невозможно удалить фотографию. Отсутствует идентификатор фотографии.");
         }
 
         $photo = $this->_unitOfWork->photoRepository()->get($photoId);
 
-        if(!isset($photo)){
-            throw new Exception("Невозможно удалить фотографию. Не найдена фотография с идентификатором ".$photoId);
+        if (!isset($photo)) {
+            throw new Exception("Невозможно удалить фотографию. Не найдена фотография с идентификатором " . $photoId);
         }
         $this->deleteProductPhoto($photo);
 
         $this->_unitOfWork->commit();
     }
 
-    private function deleteProductPhoto($photo){
-        Storage::delete('public'.$photo->getImage());
+    private function deleteProductPhoto($photo)
+    {
+        Storage::delete('public' . $photo->getImage());
         $this->_unitOfWork->photoRepository()->delete($photo);
     }
 
-    public function getProductFeature($productId, $featureId){
+    public function getProductFeature($productId, $featureId)
+    {
         $product = $this->_unitOfWork->productRepository()->get($productId);
 
         $productFeature = $product->getFeatures()->filter(
-            function($item) use($featureId){
+            function ($item) use ($featureId) {
                 return $item->getFeature()->getId() == $featureId;
             })->first();
 
         return $productFeature;
     }
 
-    public function saveProductFeatureValue($productId, $featureId, $value){
+    public function saveProductFeatureValue($productId, $featureId, $value)
+    {
         $message = "Невозможно сохранить значение характеристики товара";
 
         if (empty($productId)) {
@@ -184,24 +187,23 @@ class ProductManager
 
         $product = $this->_unitOfWork->productRepository()->get($productId);
 
-        if(!isset($product)){
-            throw new Exception($message . "Товар не найден с идентификатором".$productId);
+        if (!isset($product)) {
+            throw new Exception($message . "Товар не найден с идентификатором" . $productId);
         }
 
         $feature = $this->_unitOfWork->featureRepository()->get($featureId);
-        if(!isset($feature)){
-            throw new Exception($message . "Характеристика товара с идентификатором ".$productId." не найдена");
+        if (!isset($feature)) {
+            throw new Exception($message . "Характеристика товара с идентификатором " . $productId . " не найдена");
         }
 
         $productFeatures = $this->_unitOfWork->productFeatureRepository()->getByProductIdAndFeatureId($productId, $featureId);
-        if($productFeatures->isEmpty()){
+        if ($productFeatures->isEmpty()) {
             $productFeature = new ProductFeature();
             $productFeature->setProduct($product);
             $productFeature->setFeature($feature);
             $productFeature->setValue($value);
             $this->_unitOfWork->productFeatureRepository()->create($productFeature);
-        }
-        else{
+        } else {
             $productFeature = $productFeatures->first();
             $productFeature->setValue($value);
             $this->_unitOfWork->productFeatureRepository()->update($productFeature);
@@ -210,7 +212,8 @@ class ProductManager
         $this->_unitOfWork->commit();
     }
 
-    public function getPaginatedProductsWithFilter(ProductsFilter $filter, $pageSize, $pageNumber){
+    public function getPaginatedProductsWithFilter(ProductsFilter $filter, $pageSize, $pageNumber)
+    {
         $products = new ArrayCollection();
         $paginatedProducts = $this->_unitOfWork->productRepository()->getPaginatedProductsWithFilter($filter, $pageSize, $pageNumber);
 
@@ -221,27 +224,28 @@ class ProductManager
         return $paginatedProducts;
     }
 
-    public function checkOrderProducts($productsInfo){
+    public function checkOrderProducts($productsInfo)
+    {
         $summaryPrice = 0.0;
 
-        if(empty($productsInfo)){
+        if (empty($productsInfo)) {
             throw new Exception('Отсутствуют товары в корзине.');
         }
 
-        foreach($productsInfo as $productInfo){
+        foreach ($productsInfo as $productInfo) {
             $productId = $productInfo->productId;
             $productAmount = $productInfo->productAmount;
 
             $product = $this->_unitOfWork->productRepository()->get($productId);
-            if(!isset($product)){
+            if (!isset($product)) {
                 throw new Exception("Товар с идентификатором $product отсутствует");
             }
 
-            if($product->getAmount() < $productAmount){
-                throw new Exception("Товар".$product->getName()." в количестве".$productAmount."отсутствует на складе.");
+            if ($product->getAmount() < $productAmount) {
+                throw new Exception("Товар" . $product->getName() . " в количестве" . $productAmount . "отсутствует на складе.");
             }
 
-            $summaryPrice += $productAmount*$product->getPrice();
+            $summaryPrice += $productAmount * $product->getPrice();
         }
 
         return $summaryPrice;
@@ -268,7 +272,7 @@ class ProductManager
             foreach ($productsInfo as $productInfo) {
                 $currentProduct = $this->_unitOfWork->productRepository()->get($productInfo->productId);
                 if (!isset($currentProduct)) {
-                    throw new Exception("Товар с идентификатором.".$productInfo->productId."отсутствует");
+                    throw new Exception("Товар с идентификатором." . $productInfo->productId . "отсутствует");
                 }
                 $currentProductAmount = $currentProduct->getAmount();
                 if ($currentProductAmount < $productInfo->productAmount) {
@@ -289,8 +293,7 @@ class ProductManager
             $order->setTotalPrice($summaryPrice);
             $this->_unitOfWork->orderRepository()->update($order);
             $this->_unitOfWork->commit();
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             $this->_unitOfWork->orderRepository()->delete($order);
             $this->_unitOfWork->commit();
             throw new Exception($e->getMessage());
@@ -298,18 +301,20 @@ class ProductManager
     }
 
 
-    public function test(){
-        dd($this->getPaginatedProductsByEquipmentProfile(2,2, 10, 1));
+    public function test()
+    {
+        dd($this->getPaginatedProductsByEquipmentProfile(2, 2, 10, 1));
         $compatibilities = array(['feature' => '15', 'value' => 'AMD-4', 'rule' => '=']);
         $compatibilities = new ArrayCollection($this->_unitOfWork->productRepository()->getPaginatedProductsByCompatibilityInfo(2, $compatibilities));
 
     }
 
-    public function getPaginatedProductsByEquipmentProfile($productId, $secondTypeId, $pageSize, $pageNumber){
+    public function getPaginatedProductsByEquipmentProfile($productId, $secondTypeId, $pageSize, $pageNumber)
+    {
         $paginatedResult = new PaginationResult([], 0);
 
         $product = $this->_unitOfWork->productRepository()->get($productId);
-        if(!isset($product)){
+        if (!isset($product)) {
             throw new Exception("Ошибка бизнес логики. Товар с идентификатором $productId отсутствует");
         }
 
@@ -317,8 +322,8 @@ class ProductManager
         $productFeatures = $product->getFeatures();
 
         $compatibilities = $this->_unitOfWork->compatibilityRepo()->getCompatibilitiesByTypesIds($firstTypeId, $secondTypeId);
-        if(!$compatibilities->isEmpty() ){
-            if(!$productFeatures->isEmpty()){
+        if (!$compatibilities->isEmpty()) {
+            if (!$productFeatures->isEmpty()) {
                 $compatibilitiesInfo = $compatibilities->map(function ($item) use ($firstTypeId, $productFeatures) {
                     if ($item->getFirstType()->getId() == $firstTypeId) {
                         $productFeatureValue = $productFeatures->filter(function ($productFeature) use ($item) {
@@ -333,17 +338,16 @@ class ProductManager
                         ];
                     }
                 });
-                if(!empty($compatibilitiesInfo)) {
+                if (!empty($compatibilitiesInfo)) {
                     $paginatedResult = $this->_unitOfWork->productRepository()->getPaginatedProductsByCompatibilityInfo($secondTypeId, $compatibilitiesInfo, $pageSize, $pageNumber);
                 }
             }
 
-        }
-        else{
+        } else {
             $filter = new ProductsFilter();
             $filter->setTypeId($secondTypeId);
 
-            $paginatedResult = $this->_unitOfWork->productRepository()->getPaginatedProductsWithFilter($filter,$pageSize, $pageNumber);
+            $paginatedResult = $this->_unitOfWork->productRepository()->getPaginatedProductsWithFilter($filter, $pageSize, $pageNumber);
         }
         $products = new ArrayCollection();
 

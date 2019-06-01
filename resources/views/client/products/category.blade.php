@@ -5,7 +5,7 @@
 @section('content')
     <div>
         <h3>{{$genericType->getName()}}</h3>
-        <ul>
+        <ul style="font-size: 16px">
             @foreach($genericType->getTypes() as $type)
                 <li>
                     <a href="/products?subCategory={{$type->getId()}}">{{$type->getName()}}</a>

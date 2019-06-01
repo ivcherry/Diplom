@@ -4,18 +4,18 @@
 
     <table class="table">
         <thead>
-            <th><label for="name" class="header-label">Заголовок</label></th>
-            <th><label for="name" class="header-label">Краткое описание</label></th>
-            <th><label for="name" class="header-label">Полный текст акции</label></th>
-            <th><label for="name" class="header-label">Дата</label></th>
+        <th><label for="name" class="header-label">Заголовок</label></th>
+        <th><label for="name" class="header-label">Краткое описание</label></th>
+        <th><label for="name" class="header-label">Полный текст акции</label></th>
+        <th><label for="name" class="header-label">Дата</label></th>
         </thead>
         <tbody>
-            <tr>
-                <td><span id="title">{{$saleModel->getTitle()}}</span></td>
-                <td><span id="summary">{{$saleModel->getSummary()}}</span></td>
-                <td><span id="text">{{$saleModel->getText()}}</span></td>
-                <td><span id="date">{{$saleModel->getDate()}}</span></td>
-            </tr>
+        <tr>
+            <td><span id="title">{{$saleModel->getTitle()}}</span></td>
+            <td><span id="summary">{{$saleModel->getSummary()}}</span></td>
+            <td><span id="text">{{$saleModel->getText()}}</span></td>
+            <td><span id="date">{{$saleModel->getDate()}}</span></td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -26,7 +26,7 @@
 
         <div class="modal-content">
             <div class="modal-header">
-                Измененение акции № &nbsp; <strong>{{$saleModel->getId()}}</strong>
+                Измененение акции № &nbsp; {{$saleModel->getId()}}
             </div>
             <form id="editSaleForm">
                 <div class="modal-body">
@@ -41,12 +41,14 @@
                         </div>
                         <div class="form-group form-container">
                             <label for="name">Краткое содержание</label>
-                            <textarea type="text" name="summary" class="form-control" >{{$saleModel->getSummary()}}</textarea>
+                            <textarea type="text" name="summary"
+                                      class="form-control">{{$saleModel->getSummary()}}</textarea>
                         </div>
 
                         <div class="form-group form-container">
                             <label for="name">Текст</label>
-                            <textarea type="text" name="text" class="form-control" >{{$saleModel->getText()}}</textarea>
+                            <textarea type="text" name="text" class="form-control" cols="10"
+                                      rows="5">{{$saleModel->getText()}}</textarea>
                         </div>
 
                         <div class="form-group form-container">
@@ -56,8 +58,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-modal--success" id="saveEdit">Сохранить</button>
-                    <button type="reset" id="cancelEdit" class="btn-modal--danger" data-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-modal--success" id="saveEdit">Сохранить</button>
+                    <button type="reset" id="cancelEdit" class="btn btn-modal--danger" data-dismiss="modal">Отмена
+                    </button>
                 </div>
             </form>
         </div>

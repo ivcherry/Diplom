@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Mappings;
+
 use App\Entities\Order;
+use App\Entities\Role;
 use App\Entities\User;
 use App\Entities\WorkScheduler;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
-use App\Entities\Role;
+
 class UserMap extends EntityMapping
 {
     public function mapFor()
@@ -13,7 +16,7 @@ class UserMap extends EntityMapping
         return User::class;
     }
 
-    public function map (Fluent $builder)
+    public function map(Fluent $builder)
     {
         $builder->increments('id');
 

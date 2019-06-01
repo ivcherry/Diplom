@@ -3,10 +3,8 @@
 namespace App\BusinessLogic;
 
 use App\Entities\Sale;
-use App\Entities\Type;
 use App\Repositories\UnitOfWork\UnitOfWork;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Exception;
 
 class SaleManager
@@ -40,8 +38,7 @@ class SaleManager
         try {
             $this->_unitOfWork->saleRepository()->create($sale);
             $this->_unitOfWork->commit();
-        }
-        catch (Exception $exception){
+        } catch (Exception $exception) {
             $name = $sale->getTitle();
             throw new Exception("Категория с наименованием $name уже существует");
         }
@@ -61,33 +58,35 @@ class SaleManager
         return $paginatedTypes;
     }
 
-    public function edit(Sale $sale){
-        if(empty($sale->getId())){
+    public function edit(Sale $sale)
+    {
+        if (empty($sale->getId())) {
             throw new Exception("Невозможно изменить акцию. Не указан идентификатор");
         }
-        if(empty($sale->getTitle())){
+        if (empty($sale->getTitle())) {
             throw new Exception("Невозможно изменить акцию. Не указан заголовок");
         }
-        if(empty($sale->getSummary())){
+        if (empty($sale->getSummary())) {
             throw new Exception("Невозможно изменить акцию. Не указано краткое содержание");
         }
-        if(empty($sale->getText())){
+        if (empty($sale->getText())) {
             throw new Exception("Невозможно изменить акцию. Не указан текст");
         }
-        if(empty($sale->getDate())){
+        if (empty($sale->getDate())) {
             throw new Exception("Невозможно изменить акцию. Не указана дата");
         }
         $this->_unitOfWork->saleRepository()->update($sale);
         $this->_unitOfWork->commit();
     }
 
-    public function delete($id){
-        if(empty($id)){
+    public function delete($id)
+    {
+        if (empty($id)) {
             throw new Exception("Невозможно удалить категрию товара. Отсуствует идентификатор категории товара.");
         }
 
         $sale = $this->_unitOfWork->saleRepository()->get($id);
-        if(!isset($sale)){
+        if (!isset($sale)) {
             throw new Exception("Невозможно удалить категорию товара. Категория товара с идентификатором $id не найден.");
         }
         $this->_unitOfWork->saleRepository()->delete($sale);

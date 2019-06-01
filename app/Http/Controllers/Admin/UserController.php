@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\BusinessLogic\UserManager;
-use App\Http\Controllers\Controller;
-use App\ViewModels\UserViewModel;
-use Illuminate\Http\Request;
 use App\Entities\User;
+use App\Http\Controllers\Controller;
 use Exception;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -23,7 +22,8 @@ class UserController extends Controller
         return view('admin.user_data.index');
     }
 
-    public function getAllUsers(Request $request){
+    public function getAllUsers(Request $request)
+    {
         $response = $this->_userManager->getAllUsers();
         return ($response);
     }
@@ -36,24 +36,25 @@ class UserController extends Controller
 
         $roles = $this->_userManager->getAllRoles();
 
-        $view = view('admin.user_data._userDataPartialView', ["userModel"=>$userModel, "roles"=>$roles]);
+        $view = view('admin.user_data._userDataPartialView', ["userModel" => $userModel, "roles" => $roles]);
         return response($view);
     }
 
-    public function deleteUser(Request $request){
-        try{
+    public function deleteUser(Request $request)
+    {
+        try {
             $userId = $request->id;
             $this->_userManager->deleteUser($userId);
 
             return $this->jsonSuccessResult(null);
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return $this->jsonFaultResult([$e->getMessage()]);
         }
     }
 
-    public function editUser(Request $request){
-        try{
+    public function editUser(Request $request)
+    {
+        try {
             $newUser = new User();
 
             $newUser->setId($request->id);
@@ -65,35 +66,35 @@ class UserController extends Controller
 
             $this->_userManager->editUser($newUser);
             return $this->jsonSuccessResult(null);
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return $this->jsonFaultResult([$e->getMessage()]);
         }
     }
 
-    public function editUserRole(Request $request){
+    public function editUserRole(Request $request)
+    {
 
-      $rolesToAdd = array();
+        $rolesToAdd = array();
 
-      $userId = $request->userId;
+        $userId = $request->userId;
 
-      $admin = $request->admin_;
-      if (!empty($admin)) {
-          array_push($rolesToAdd, $admin);
-      }
+        $admin = $request->admin_;
+        if (!empty($admin)) {
+            array_push($rolesToAdd, $admin);
+        }
 
-      $worker = $request->worker_;
-      if (!empty ($worker)) {
-          array_push($rolesToAdd, $worker);
-      }
+        $worker = $request->worker_;
+        if (!empty ($worker)) {
+            array_push($rolesToAdd, $worker);
+        }
 
-      $customer = $request->customer_;
-      if (!empty ($customer)) {
-          array_push($rolesToAdd, $customer);
-      }
+        $customer = $request->customer_;
+        if (!empty ($customer)) {
+            array_push($rolesToAdd, $customer);
+        }
 
-      $this->_userManager->UpdateUserRoles($userId,$rolesToAdd);
-      return $this->jsonSuccessResult(null);
+        $this->_userManager->UpdateUserRoles($userId, $rolesToAdd);
+        return $this->jsonSuccessResult(null);
 
     }
 

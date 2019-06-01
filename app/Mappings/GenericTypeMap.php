@@ -7,8 +7,9 @@
  */
 
 namespace App\Mappings;
-use App\Entities\Type;
+
 use App\Entities\GenericType;
+use App\Entities\Type;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
 

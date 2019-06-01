@@ -7,10 +7,11 @@
  */
 
 namespace App\Repositories;
-use App\Entities\Sale;
-use Doctrine\ORM\EntityManager;
-use App\Repositories\Base\GenericRepository;
+
 use App\Entities\PaginationResult;
+use App\Entities\Sale;
+use App\Repositories\Base\GenericRepository;
+use Doctrine\ORM\EntityManager;
 
 class SaleRepository extends GenericRepository
 {
@@ -24,13 +25,14 @@ class SaleRepository extends GenericRepository
         return $this->repo->findOneBy(['title' => $title]);
     }
 
-    public function getPaginate($pageSize,$pageNumber){
+    public function getPaginate($pageSize, $pageNumber)
+    {
         $query = $this->repo->createQueryBuilder($this->model);
 
         $query = $query
-            ->orderBy($this->model.'.id')
+            ->orderBy($this->model . '.id')
             ->setMaxResults($pageSize)
-            ->setFirstResult($pageSize*($pageNumber-1))
+            ->setFirstResult($pageSize * ($pageNumber - 1))
             ->getQuery();
         $sales = $query->execute();
 

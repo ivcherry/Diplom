@@ -32,6 +32,7 @@ class ProductFeature
     {
         $this->productFeatures = $productFeatures;
     }
+
     /**
      * @return mixed
      */

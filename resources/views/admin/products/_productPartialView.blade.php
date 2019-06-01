@@ -37,7 +37,9 @@
             </div>
             <form id="editProductForm">
                 <div class="modal-body">
-                    <div class="errors alert alert-danger"><ul></ul></div>
+                    <div class="errors alert alert-danger">
+                        <ul></ul>
+                    </div>
                     <div class="row">
                         <input type="hidden" name="id" value="{{$product->getId()}}">
                         <div class="form-group form-container">
@@ -46,23 +48,28 @@
                         </div>
                         <div class="form-group form-container">
                             <label for="subCategory">Подкатегория</label>
-                            <input id="subCategoryDropDown" name="subCategory" style="width: 55%; margin: 10px 0" value="{{$product->getType()->getId()}}">
+                            <input id="subCategoryDropDown" name="subCategory" style="width: 55%; margin: 10px 0"
+                                   value="{{$product->getType()->getId()}}">
                         </div>
                         <div class="form-group form-container">
                             <label for="price">Цена</label>
-                            <input id="price" type="number" name="price" title="currency" min="0" style="width: 55%; margin: 10px 0" value="{{$product->getPrice()}}"/>
+                            <input id="price" type="number" name="price" title="currency" min="0"
+                                   style="width: 55%; margin: 10px 0" value="{{$product->getPrice()}}"/>
                         </div>
                         <div class="form-group form-container">
                             <label for="amount">Количество</label>
-                            <input id="amount" type="number" name="amount" title="currency" min="0" style="width: 55%; margin: 10px 0" value="{{$product->getAmount()}}"/>
+                            <input id="amount" type="number" name="amount" title="currency" min="0"
+                                   style="width: 55%; margin: 10px 0" value="{{$product->getAmount()}}"/>
                         </div>
                         <div class="form-group form-container">
                             <label for="description">Описание</label>
-                            <textarea id="description" class="form-control" name="description" rows="10" style="">{{$product->getDescription()}}</textarea>
+                            <textarea id="description" class="form-control" name="description" rows="10"
+                                      style="">{{$product->getDescription()}}</textarea>
                         </div>
                         <div class="form-group form-container">
                             <label for="producer">Производитель</label>
-                            <input id="producer" class="form-control" name="producer" type="text" value="{{$product->getProducer()}}"/>
+                            <input id="producer" class="form-control" name="producer" type="text"
+                                   value="{{$product->getProducer()}}"/>
                         </div>
                     </div>
                 </div>

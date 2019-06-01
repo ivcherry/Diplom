@@ -1,9 +1,11 @@
 <?php
+
 namespace App\ViewModels;
 
 use JsonSerializable;
 
-class JsonResult implements JsonSerializable {
+class JsonResult implements JsonSerializable
+{
 
     private $data;
     private $success;

@@ -8,8 +8,8 @@
 
 namespace App\Mappings;
 
-use App\Entities\Review;
 use App\Entities\Product;
+use App\Entities\Review;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
 

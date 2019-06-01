@@ -9,10 +9,10 @@
 namespace App\Mappings;
 
 use App\Entities\Order;
+use App\Entities\Product;
 use App\Entities\ProductOrder;
 use LaravelDoctrine\Fluent\EntityMapping;
 use LaravelDoctrine\Fluent\Fluent;
-use App\Entities\Product;
 
 class ProductOrderMap extends EntityMapping
 {

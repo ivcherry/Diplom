@@ -12,14 +12,10 @@ use App\BusinessLogic\OrderManager;
 use App\BusinessLogic\ProductManager;
 use App\BusinessLogic\ProductOrderManager;
 use App\Entities\Order;
-use App\Entities\Type;
 use App\Http\Controllers\Controller;
-use App\BusinessLogic\TypeManager;
-use Illuminate\Http\Request;
-use App\ViewModels\TypeViewModel;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Repositories\UnitOfWork\UnitOfWork;
 
 class OrderController extends Controller
 {

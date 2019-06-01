@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entities;
+
 use JsonSerializable;
 
 class News implements JsonSerializable
@@ -20,7 +21,7 @@ class News implements JsonSerializable
      */
     public function getDate()
     {
-        if($this->date==null){
+        if ($this->date == null) {
             return "";
         }
         return $this->date->format('Y-m-d');
@@ -31,9 +32,9 @@ class News implements JsonSerializable
      */
     public function setDate($date)
     {
-        $this->date =  date_create($date);
+        $this->date = date_create($date);
     }
-    
+
     /**
      * @return mixed
      */

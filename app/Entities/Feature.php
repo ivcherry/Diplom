@@ -36,8 +36,9 @@ class Feature implements JsonSerializable
         $this->types->add($type);
     }
 
-    public function deleteType(Type $type){
-        if($this->types->contains($type)){
+    public function deleteType(Type $type)
+    {
+        if ($this->types->contains($type)) {
             $this->types->removeElement($type);
         }
     }
@@ -74,12 +75,14 @@ class Feature implements JsonSerializable
         $this->name = $name;
     }
 
-    public function getProducts(){
+    public function getProducts()
+    {
         return $this->products;
     }
 
-    public function addProduct($product){
-        if($this->products->contains($product)){
+    public function addProduct($product)
+    {
+        if ($this->products->contains($product)) {
             return;
         }
         $this->products->add($product);

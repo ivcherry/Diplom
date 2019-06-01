@@ -2,9 +2,6 @@
 
 namespace App\Entities;
 
-use App\Entities\Review;
-use App\Entities\Photo;
-use App\Entities\ProductFeature;
 use Doctrine\Common\Collections\ArrayCollection;
 use JsonSerializable;
 

@@ -2,7 +2,8 @@
 
 namespace App\Entities;
 
-class Equipment{
+class Equipment
+{
     public $equipmentStages;
     public $currentStage;
     private $firstStage = 'processor';
@@ -32,21 +33,25 @@ class Equipment{
         $this->currentStage = $currentStage;
     }
 
-    public function isFirstStage($stage){
+    public function isFirstStage($stage)
+    {
         return $stage == $this->firstStage;
     }
 
-    public function setProductIdByStage($stage,$productId){
+    public function setProductIdByStage($stage, $productId)
+    {
         $this->equipmentStages[$stage] = $productId;
     }
 
-    public function checkCurrentStage($stage){
+    public function checkCurrentStage($stage)
+    {
         return $stage == $this->currentStage;
     }
 
-    public function checkAllStages(){
-        foreach($this->equipmentStages as $stage){
-            if($stage == 'unknown'){
+    public function checkAllStages()
+    {
+        foreach ($this->equipmentStages as $stage) {
+            if ($stage == 'unknown') {
                 return false;
             }
         }
@@ -54,12 +59,14 @@ class Equipment{
         return true;
     }
 
-    public function getProductsIds(){
+    public function getProductsIds()
+    {
         return $this->equipmentStages;
     }
 
-    public function getProductIdByStage($stage){
-        if(key_exists($stage, $this->equipmentStages)){
+    public function getProductIdByStage($stage)
+    {
+        if (key_exists($stage, $this->equipmentStages)) {
             return $this->equipmentStages[$stage];
         }
         return null;

@@ -2,12 +2,7 @@
 
 namespace App\BusinessLogic;
 
-use App\Entities\Sale;
-use App\Entities\Type;
 use App\Repositories\UnitOfWork\UnitOfWork;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Exception;
 
 class ProductOrderManager
 {

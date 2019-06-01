@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\BusinessLogic\UserManager;
 use App\Entities\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Exception;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
