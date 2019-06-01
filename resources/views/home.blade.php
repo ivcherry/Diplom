@@ -194,6 +194,8 @@
                 </div>
             </div>
             <div class="col">
+
+
                 <div class="card second">
                     <span class="hit">ХИТ продаж !</span>
                     <div class="img-container">
