@@ -39,6 +39,7 @@ class Type extends \App\Entities\Type implements \Doctrine\ORM\Proxy\Proxy
     public static $lazyPropertiesDefaults = [];
 
 
+
     /**
      * @param \Closure $initializer
      * @param \Closure $cloner
@@ -47,12 +48,17 @@ class Type extends \App\Entities\Type implements \Doctrine\ORM\Proxy\Proxy
     {
 
         $this->__initializer__ = $initializer;
-        $this->__cloner__ = $cloner;
+        $this->__cloner__      = $cloner;
     }
 
 
+
+
+
+
+
     /**
-     *
+     * 
      * @return array
      */
     public function __sleep()
@@ -65,11 +71,11 @@ class Type extends \App\Entities\Type implements \Doctrine\ORM\Proxy\Proxy
     }
 
     /**
-     *
+     * 
      */
     public function __wakeup()
     {
-        if (!$this->__isInitialized__) {
+        if ( ! $this->__isInitialized__) {
             $this->__initializer__ = function (Type $proxy) {
                 $proxy->__setInitializer(null);
                 $proxy->__setCloner(null);
@@ -77,7 +83,7 @@ class Type extends \App\Entities\Type implements \Doctrine\ORM\Proxy\Proxy
                 $existingProperties = get_object_vars($proxy);
 
                 foreach ($proxy->__getLazyProperties() as $property => $defaultValue) {
-                    if (!array_key_exists($property, $existingProperties)) {
+                    if ( ! array_key_exists($property, $existingProperties)) {
                         $proxy->$property = $defaultValue;
                     }
                 }
@@ -87,7 +93,7 @@ class Type extends \App\Entities\Type implements \Doctrine\ORM\Proxy\Proxy
     }
 
     /**
-     *
+     * 
      */
     public function __clone()
     {
@@ -166,14 +172,14 @@ class Type extends \App\Entities\Type implements \Doctrine\ORM\Proxy\Proxy
         return self::$lazyPropertiesDefaults;
     }
 
-
+    
     /**
      * {@inheritDoc}
      */
     public function getId()
     {
         if ($this->__isInitialized__ === false) {
-            return (int)parent::getId();
+            return (int)  parent::getId();
         }
 
 

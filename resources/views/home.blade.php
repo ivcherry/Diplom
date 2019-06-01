@@ -190,6 +190,7 @@
                         <div class="buy-menu">
                             <a href="#" class="btn btn-primary btn-md">Купить</a> <span><h5>73 999 ₽</h5></span>
                         </div>
+
                     </div>
                 </div>
             </div>
